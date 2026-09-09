@@ -1,2 +1,3 @@
-# Artsrun.github.io
-User site hub — artsrun.github.io
+# artsrun.github.io
+
+User-site hub. Live: https://artsrun.github.io
