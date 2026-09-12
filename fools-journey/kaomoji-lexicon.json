@@ -1,0 +1,50 @@
+{
+  "id": "kaomoji-lexicon",
+  "version": "1.0",
+  "date": "2026-09-12",
+  "type": "emoticon_string_lexicon",
+  "encoding": "emoticon_string",
+  "not": "unicode_emoji",
+  "operator": "ԼԵԶՈՒ = ԳՈՅՈՒԹՅՈՒՆ + ՓՈՓՈԽՈՒԹՅՈՒՆ + ԺԱՄԱՆԱԿ + ՍՈՑԻԱՌԱԿԱՆ ԿՌԿՆՈՒԹՅՈՒՆ",
+  "stability": "ԿԱՅՈՒՆՈՒԹՅՈՒՆ = ՓՈՓՈԽՈՒԹՅԱՆ ԺԱՄԱՆԱԿԱՎՈՐ ԿԱԶՄԱԿԵՀՊՈՒՄ",
+  "notes": {
+    "unit": "A kaomoji is a speaker-composed string. Unicode encodes the stolen letters, not the face.",
+    "slots": "eyes+mouth name existence; arms+prop name change; particles name time.",
+    "synonym": "▽ ᗜ ω ꒳ are handwriting of one existence class, not new verbs.",
+    "emoji_map": "Optional translation. ;-) is not identical to 😉 in the file."
+  },
+  "slot_order": ["l_arm", "frame_l", "eye_l", "mouth", "eye_r", "frame_r", "r_arm", "motion", "prop", "particle"],
+  "acts": [
+    {"id": "hail", "hy": "ողջույն", "existence": "an available speaker", "change": "wave or point", "canonical": "ヽ(•‿•)ノ", "variants": ["(´• ω •`)ヽ", "(☎ﾟpヮp)☎", "(ヽ◕ヮ◕)ヽ*: ｡ﾟ✧", "٩(◕‿◕)۶", "(^_^)/~~~", "(ヽ◕ヮ◕)ヽ*: ｡ﾟ✧ ✧ﾟ｡: *ヽ(◕ヮ◕ヽ)"], "particles": ["✧", "~~~", "ヽ"], "unicode_near": "👋 U+1F44B / 🙌 U+1F64C"},
+    {"id": "alliance", "hy": "դաշինք", "existence": "closeness already assumed", "change": "hug, kiss, hand over a heart", "canonical": "(づ￣ ³￣)づ", "variants": ["(っ⌒‿⌒)っ", "⊂(￣▽￣)⊃", "(´ε｀ )♡", "( ˘ ³˘)♥", "( ˘ ³˘)♥ ʕ￫ᴥ￩ʔ"], "particles": ["♡", "♥", "3"], "unicode_near": "🤗 U+1F917 / 😘 U+1F618"},
+    {"id": "force", "hy": "ուժ", "existence": "a will that will not stay seated", "change": "fist, flex, barrel", "canonical": "(ง'̀-'́)ง", "variants": ["ᕦ(ò_óˇ)ᕤ", "ᕙ(⇀‸⇁‶)ᕗ", "(ﾒ￣▽￣)︻┳＝一", "(ᓄ☢※☢)ᓄ", "ᕦ(▀̿ ̿ヮ▀̿ ̿)ᕤ"], "particles": ["︻┳＝一", "☢"], "unicode_near": "😠 U+1F620 / 💪 U+1F4AA"},
+    {"id": "mask", "hy": "դիմակ", "existence": "a second face behind the first", "change": "smirk, put on glasses, cast", "canonical": "( ͡° ͜ʖ ͡°)", "variants": ["( ͡° ͜ʖ ͡°)✧", "(¬‿¬)", "(▀̿Ḽ́▀̿ ̿)", "( •_•)>⌐■-■ ( ⌐■_■)", "(∩ ͡° ͜ʖ ͡°)⊃━☆ﾟ"], "particles": ["✧", "⌐■-■"], "note": "Sunglasses is a three-beat clause.", "unicode_near": "😏 U+1F60F / 😎 U+1F60E"},
+    {"id": "wait", "hy": "սպասում", "existence": "a face that stays", "change": "almost none; time is the message", "canonical": "(－_－) zzZ", "variants": ["(´-ω-`)", "(￣。￣)", "(´-`).。oO", "(-, – )…zzzZZZ", "(´ρ`)"], "particles": ["zzZ", "。oO", "…"], "unicode_near": "😴 U+1F634 / 🤔 U+1F914"},
+    {"id": "ack", "hy": "ընդունում", "existence": "polite presence", "change": "mark the room as wrong without leaving the turn", "canonical": "(；一_一)", "variants": ["(^_^;)", "(・・;)ゞ", "(￣ー￣;)", "(´～｀)ゞ", "(＠_＠;)"], "particles": [";", "ゞ"], "unicode_near": "😅 U+1F605"},
+    {"id": "side", "hy": "կողային հայացք", "existence": "withheld agreement", "change": "glance off-axis", "canonical": "(￢_￢)", "variants": ["(눈_눈)", "(¬_¬)ヽ", "(ಠ_ಠ)", "(㇆_㇆)", "(ب_ب)"], "particles": [], "unicode_near": "😒 U+1F612 / 🙄 U+1F644"},
+    {"id": "collapse", "hy": "փլուզում", "existence": "the self or the room as damaged", "change": "leak, shout, flip, lie down", "canonical": "(╯°□°)╯︵ ┻━┻", "variants": ["(ಥ※ಥ)", "(ヽД`)", "(´ཀ`」 ∠)", "(╯°Д°)╯︵/(. □ . \\)", "ʕノ•ᴥ•ʔノ ︵ ┻━┻", "(⊙⊙)(☉_☉)(⊙⊙)"], "particles": ["︵", "┻━┻"], "note": "Flip can take a table or another face as patient.", "unicode_near": "😡 U+1F621 — no encoded table-flip sentence"},
+    {"id": "repair", "hy": "վերականգնում", "existence": "the table as a repairable world", "change": "restore form, not habit", "canonical": "┬─┬ノ( º _ ºノ)", "variants": ["┬──┬ ノ(ò_óノ)", "(ಥ‿ಥ)"], "particles": ["┬─┬"], "note": "Thin class.", "unicode_near": "none. Closest gesture 🙏 U+1F64F is a different verb."},
+    {"id": "shrug", "hy": "ուսի թոթվում", "existence": "a warning already in the room", "change": "refuse to take it as addressed to you", "canonical": "¯\\_(ツ)_/¯", "variants": ["┐(￣ヘ￣)┌", "乕(ᗒᗣᗕ)ㄯ", "ヽ(ー_ー )ノ"], "particles": [], "note": "FJ-01 uses ┐(￣ヘ￣)┌.", "unicode_near": "🤷 U+1F937"}
+  ],
+  "extra_marks": [
+    {"id": "question", "canonical": "(・・？)", "job": "question particle on a face"},
+    {"id": "walk", "canonical": "ᕕ( ᐛ )ᕗ", "job": "motion treated as proof"},
+    {"id": "species", "canonical": "ʕ•ᴥ•ʔ", "job": "leave human grammar"}
+  ],
+  "relations_to_fj": [
+    {"act": "shrug", "beat": "FJ-01"},
+    {"act": "mask", "beat": "FJ-02"},
+    {"act": "walk", "beat": "FJ-04"},
+    {"act": "force", "beat": "FJ-06"},
+    {"act": "collapse", "beat": "FJ-09"},
+    {"act": "repair", "beat": "FJ-12"},
+    {"act": "mask", "beat": "FJ-13"},
+    {"act": "walk", "beat": "FJ-14"}
+  ],
+  "unicode": {
+    "spec": "UTS #51 Unicode Emoji 17.0 (2025-09-09)",
+    "emoticons_block": "U+1F600–U+1F64F (80 faces, full since Unicode 8.0)",
+    "emoji_total_17": 3953,
+    "rule": "Unicode standardizes characters and listed sequences. It does not standardize kaomoji as words."
+  }
+}
