@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="hy">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ԼԵԶՈՒ · architecture · Artsrun</title>
+<meta name="description" content="Architecture sketch for language as a dynamic system.">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<main>
+  <nav>
+    <a href="/">Hub</a>
+    <a href="/projects/" aria-current="page">Projects</a>
+    <a href="/blog/">Blog</a>
+  </nav>
+  <h1>Լեզու · ճարտարապետություն</h1>
+  <p class="sub">from scratch · ASCII + kaomoji · կայունությունը շարժման բացակայությունը չէ</p>
+  <p class="op">ԼԵԶՈՒ = Գ + Փ + Ժ + Կ</p>
+  <pre class="sketch" id="sketch">loading sketch…</pre>
+  <p class="sub" style="margin-top:1.4rem"><a href="/blog/lezu-dynamic/">Read the note →</a> · <a href="/fools-journey/">Fool’s Journey →</a> · <a href="/lezu/sketch.txt">raw sketch</a></p>
+  <footer>Artsrun Hakobyan · lezu-dynamic</footer>
+</main>
+<script>
+fetch('/lezu/sketch.txt').then(r=>r.text()).then(t=>{
+  document.getElementById('sketch').textContent = t;
+}).catch(()=>{
+  document.getElementById('sketch').textContent = 'sketch unavailable';
+});
+</script>
+</body>
+</html>
