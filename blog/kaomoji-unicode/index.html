@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Emoticon string ≠ emoji · Artsrun</title>
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<main>
+  <nav><a href="/">Hub</a><a href="/projects/">Projects</a><a href="/blog/" aria-current="page">Blog</a></nav>
+  <h1>Emoticon string ≠ emoji</h1>
+  <p class="date">12 Sep 2026 · UTS #51 v17.0</p>
+  <p class="op">Unicode encodes letters. The face is a sentence.</p>
+  <div class="prose">
+    <p>UTS #51 (9 Sep 2025) defines an <strong>emoticon</strong> as a series of text characters meant as a face or gesture — <span style="font-family:ui-monospace,monospace">;-)</span>, <span style="font-family:ui-monospace,monospace">^‿^</span>, <span style="font-family:ui-monospace,monospace">ಠ_ಠ</span>. An <strong>emoji</strong> is a colorful pictograph: one character, or a listed sequence. The Unicode block named “Emoticons” (<code>U+1F600–U+1F64F</code>) is the second thing: eighty encoded pictographs, all of them emoji, full since Unicode 8.0.</p>
+    <p>Kaomoji (顔文字, face-mark) stays on the first side. There is no code point for <span style="font-family:ui-monospace,monospace">¯\_(ツ)_/¯</span>. What is encoded is the stolen alphabet: ASCII punctuation, Kannada <code>U+0CA0</code> ಠ, undertie <code>U+203F</code> ‿, vertical parenthesis <code>U+FE35</code> ︵, box drawing, katakana. Composition is usage. Stability is social repetition.</p>
+    <p>Emoji collapses a face into a noun. Kaomoji keeps the syntax. That is why a flip can take a new patient — another face, not only a table — without a committee. 🤷 cannot grow a second table.</p>
+    <p>Presentation selectors <code>U+FE0E</code> / <code>U+FE0F</code> are the official analogue of the sunglasses clause: same character, two costumes. ZWJ sequences are one grapheme cluster (UAX #29). A kaomoji is the opposite — every parenthesis is its own cluster. Do not put both encodings in one <code>raw</code> field without a flag. Mapping <span style="font-family:ui-monospace,monospace">;-)</span> to 😉 is translation, not identity.</p>
+  </div>
+  <h2>Sources</h2>
+  <a class="row" href="https://www.unicode.org/reports/tr51/"><span class="name">UTS #51 Unicode Emoji</span><span class="meta">definitions, properties, sequences</span></a>
+  <a class="row" href="https://www.unicode.org/faq/emoji_dingbats.html"><span class="name">FAQ · Emoji &amp; Pictographs</span><span class="meta">emoticon vs emoji vs dingbat</span></a>
+  <a class="row" href="https://www.unicode.org/charts/PDF/U1F600.pdf"><span class="name">Emoticons block chart</span><span class="meta">U+1F600–U+1F64F</span></a>
+  <p class="sub" style="margin-top:1.6rem"><a href="/fools-journey/lexicon/">Minimal alphabet →</a> · <a href="/fools-journey/">14 beats →</a></p>
+  <footer>encoding: emoticon_string · Unicode 17.0 · ~3953 emoji</footer>
+</main>
+</body>
+</html>
