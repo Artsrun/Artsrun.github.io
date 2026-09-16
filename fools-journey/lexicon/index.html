@@ -1,98 +1,283 @@
 <!doctype html>
-<html lang="hy">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Kaomoji lexicon · Artsrun</title>
+<meta name="description" content="Thirteen speech acts. Face names what exists, arms name what happens, particles name when.">
 <link rel="stylesheet" href="/css/site.css">
 <style>
-.k { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 1.05rem; letter-spacing: .02em; }
-.act { border-top: 1px solid var(--line); padding: 1rem 0 1.1rem; }
+.k { font-family: ui-monospace, Menlo, Consolas, "Noto Sans Mono", monospace; }
+.index {
+  display: flex; flex-wrap: wrap; gap: .35rem .55rem;
+  margin: 0 0 1.2rem; font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: .72rem; letter-spacing: .04em;
+}
+.index a { color: var(--dim); text-decoration: none; }
+.index a:hover { color: var(--acc); }
+.act { border-top: 1px solid var(--line); padding: 1rem 0 .95rem; }
 .act:last-of-type { border-bottom: 1px solid var(--line); }
-.act .id { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--acc); }
-.act .hy { color: var(--teal); font-size: .82rem; margin: .15rem 0 .35rem; }
-.vars { color: var(--dim); font-size: .82rem; margin-top: .45rem; line-height: 1.7; }
-.vars span { margin-right: .7rem; white-space: nowrap; }
+.act .id {
+  font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--acc);
+}
+.act .hy { color: var(--teal); font-size: .82rem; margin: .12rem 0 .4rem; }
+.face {
+  font-family: ui-monospace, Menlo, Consolas, "Noto Sans Mono", monospace;
+  font-size: 1.15rem; letter-spacing: .02em;
+  background: none; border: 0; color: var(--fg);
+  padding: 0; cursor: pointer; text-align: left;
+}
+.face:hover { color: var(--acc); }
+.face[data-copied="1"] { color: var(--teal); }
+.slots {
+  display: grid; grid-template-columns: auto 1fr;
+  gap: .12rem .55rem; margin-top: .55rem;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: .72rem; line-height: 1.45; color: var(--dim);
+}
+.slots b { font-weight: 600; letter-spacing: .1em; font-size: .62rem; }
+.slots .ex { color: var(--acc); }
+.slots .ch { color: var(--red); }
+.slots .ti { color: var(--teal); }
+.vars { color: var(--dim); font-size: .82rem; margin-top: .4rem; line-height: 1.75; }
+.vars button {
+  font-family: ui-monospace, Menlo, Consolas, "Noto Sans Mono", monospace;
+  background: none; border: 0; color: var(--dim); padding: 0; margin-right: .75rem;
+  cursor: pointer; white-space: nowrap; font-size: .82rem;
+}
+.vars button:hover { color: var(--acc); }
+.meta { color: var(--dim); font-size: .72rem; margin-top: .35rem; }
+.part {
+  display: grid; grid-template-columns: auto 1fr;
+  gap: .25rem .7rem; align-items: baseline;
+  font-size: .9rem; margin: .15rem 0;
+}
+.part .k { min-width: 3.2rem; }
+.how { margin: 0 0 .85rem; color: #d8d3c6; }
 </style>
 </head>
 <body>
 <main>
   <nav><a href="/">Hub</a><a href="/projects/">Projects</a><a href="/blog/">Blog</a></nav>
   <h1>Kaomoji lexicon</h1>
-  <p class="date">12 Sep 2026 · emoticon_string v1.0</p>
-  <p class="op">FACE = EXISTENCE + CHANGE + TIME + WHO REPEATS IT</p>
-  <div class="prose">
-    <p>Four dumps, ten verbs. Eyes and mouth name what exists. Arms and props name what happens. Particles (<span class="k">✧ ; ゞ zzZ ｡oO ♪ ︵</span>) name time. Further joy-mouths are handwriting, not new speech acts.</p>
-    <p>This is not Unicode. Unicode encodes the stolen letters. The face is a sentence the chat keeps repeating.</p>
-  </div>
-  <p class="sub"><a href="/fools-journey/">14-beat cycle →</a> · <a href="/blog/kaomoji-unicode/">Unicode note →</a> · <a href="/fools-journey/kaomoji-lexicon.json">json</a></p>
+  <p class="date">17 Sep 2026 · emoticon_string v1.1</p>
+  <p class="op">face · move · when</p>
+  <p class="how">Thirteen acts. Eyes and mouth name what exists. Arms and props name what happens. Particles name when. Extra joy-mouths are handwriting, not new verbs.</p>
+  <p class="how">Tap a face to copy the string. Unicode encodes the stolen letters. The face is the sentence the chat keeps repeating.</p>
+  <p class="sub"><a href="/blog/chain/">chain of thought →</a> · <a href="/fools-journey/">14-beat cycle →</a> · <a href="/blog/kaomoji-unicode/">emoticon ≠ emoji →</a> · <a href="/fools-journey/kaomoji-lexicon.json">json</a></p>
 
-  <h2>Ten acts</h2>
+  <nav class="index" aria-label="acts">
+    <a href="#question">question</a>
+    <a href="#side">side</a>
+    <a href="#wait">wait</a>
+    <a href="#mask">mask</a>
+    <a href="#force">force</a>
+    <a href="#walk">walk</a>
+    <a href="#ack">ack</a>
+    <a href="#collapse">collapse</a>
+    <a href="#repair">repair</a>
+    <a href="#shrug">shrug</a>
+    <a href="#alliance">alliance</a>
+    <a href="#shift">shift</a>
+    <a href="#hail">hail</a>
+  </nav>
 
-  <div class="act">
-    <div class="id">hail</div>
-    <div class="hy">ողջույն · an available speaker waves</div>
-    <div class="k">ヽ(•‿•)ノ</div>
-    <div class="vars"><span>(´• ω •`)ﾉ</span><span>(☞ﾞヮﾞ)☞</span><span>(ﾉ◕ヮ◕)ﾉ*: ･ﾞ✧</span><span>(^_^)/~~~</span></div>
+  <h2>Acts</h2>
+
+  <div class="act" id="question">
+    <div class="id">question</div>
+    <div class="hy">հարց · opens a slot, not an answer</div>
+    <button class="face" type="button" data-copy>(・・？)</button>
+    <div class="slots">
+      <b class="ex">E</b><span>a question already in the room</span>
+      <b class="ch">C</b><span>hold the turn open</span>
+      <b class="ti">T</b><span>？ — not yet</span>
+    </div>
+    <div class="vars"><button type="button" data-copy>(・・？)</button><button type="button" data-copy>(´-ω-`？)</button><button type="button" data-copy>(•ิ_•ิ？)</button></div>
   </div>
-  <div class="act">
-    <div class="id">alliance</div>
-    <div class="hy">դաշինք · closeness handed over</div>
-    <div class="k">(づ￣ ³￣)づ</div>
-    <div class="vars"><span>(っ⌒‿⌒)っ</span><span>⊂(￣▽￣)⊃</span><span>(´ε｀ )♡</span><span>( ˘ ³˘)♥ ʕ￫ᴥ￩ʔ</span></div>
-  </div>
-  <div class="act">
-    <div class="id">force</div>
-    <div class="hy">ուժ · the room must move</div>
-    <div class="k">(ง'̀-'́)ง</div>
-    <div class="vars"><span>ᕦ(ò_óˇ)ᕤ</span><span>(ﾒ￣▽￣)︻┳＝一</span><span>(ᓄ☢※☢)ᓄ</span></div>
-  </div>
-  <div class="act">
-    <div class="id">mask</div>
-    <div class="hy">դիմակ · a second face, then a costume clause</div>
-    <div class="k">( ͡° ͜ʖ ͡°)</div>
-    <div class="vars"><span>( ͡° ͜ʖ ͡°)✧</span><span>(▀̿Ḽ́▀̿ ̿)</span><span>( •_•)>⌐■-■ ( ⌐■_■)</span></div>
-  </div>
-  <div class="act">
-    <div class="id">wait</div>
-    <div class="hy">սպասում · time held; also sleep; also thought</div>
-    <div class="k">(－_－) zzZ</div>
-    <div class="vars"><span>(´-ω-`)</span><span>(´-`).。oO</span><span>(´ρ`)</span></div>
-  </div>
-  <div class="act">
-    <div class="id">ack</div>
-    <div class="hy">ընդունում · received, not agreed</div>
-    <div class="k">(；一_一)</div>
-    <div class="vars"><span>(^_^;)</span><span>(・・;)ゞ</span><span>(´～｀)ゞ</span></div>
-  </div>
-  <div class="act">
+
+  <div class="act" id="side">
     <div class="id">side</div>
     <div class="hy">կողային հայացք · attention that will not join</div>
-    <div class="k">(￢_￢)</div>
-    <div class="vars"><span>(눈_눈)</span><span>(ಠ_ಠ)</span><span>(㇆_㇆)</span></div>
-  </div>
-  <div class="act">
-    <div class="id">collapse</div>
-    <div class="hy">փլուզում · blame moved onto an object, or the self leaks</div>
-    <div class="k">(╯°□°)╯︵ ┻━┻</div>
-    <div class="vars"><span>(ಥ※ಥ)</span><span>(´ཀ`」 ∠)</span><span>ʕノ•ᴥ•ʔノ ︵ ┻━┻</span></div>
-  </div>
-  <div class="act">
-    <div class="id">repair</div>
-    <div class="hy">վերականգնում · form restored, habit not</div>
-    <div class="k">┬─┬ノ( º _ ºノ)</div>
-    <div class="vars"><span>┬──┬ ノ(ò_óノ)</span><span>(ಥ‿ಥ)</span></div>
-  </div>
-  <div class="act">
-    <div class="id">shrug</div>
-    <div class="hy">ուսի թոթվում · refuse the address · FJ-01</div>
-    <div class="k">¯\_(ツ)_/¯</div>
-    <div class="vars"><span>┐(￣ヘ￣)┌</span><span>乕(ᗒᗣᗕ)ㄯ</span><span>ヽ(ー_ー )ノ</span></div>
+    <button class="face" type="button" data-copy>(￢_￢)</button>
+    <div class="slots">
+      <b class="ex">E</b><span>withheld agreement</span>
+      <b class="ch">C</b><span>glance off-axis</span>
+      <b class="ti">T</b><span>before join</span>
+    </div>
+    <div class="vars"><button type="button" data-copy>(눈_눈)</button><button type="button" data-copy>(ಠ_ಠ)</button><button type="button" data-copy>(㇆_㇆)</button><button type="button" data-copy>(ب_ب)</button></div>
   </div>
 
-  <h2>Marks that are not full acts</h2>
-  <p class="sub"><span class="k">(・・？)</span> question particle · <span class="k">ᕕ( ᐛ )ᕗ</span> walk as proof · <span class="k">ʕ•ᴥ•ʔ</span> species-shift</p>
+  <div class="act" id="wait">
+    <div class="id">wait</div>
+    <div class="hy">սպասում · time held</div>
+    <button class="face" type="button" data-copy>(－_－) zzZ</button>
+    <div class="slots">
+      <b class="ex">E</b><span>a face that stays</span>
+      <b class="ch">C</b><span>almost none</span>
+      <b class="ti">T</b><span>zzZ / ｡oO</span>
+    </div>
+    <div class="vars"><button type="button" data-copy>(´-ω-`)</button><button type="button" data-copy>(´-`).｡oO</button><button type="button" data-copy>(´ρ`)</button></div>
+  </div>
+
+  <div class="act" id="mask">
+    <div class="id">mask</div>
+    <div class="hy">դիմակ · a second face, then a costume</div>
+    <button class="face" type="button" data-copy>( ͡° ͜ʖ ͡°)</button>
+    <div class="slots">
+      <b class="ex">E</b><span>a second face behind the first</span>
+      <b class="ch">C</b><span>smirk, glasses, sparkle</span>
+      <b class="ti">T</b><span>✧ claims novelty</span>
+    </div>
+    <div class="vars"><button type="button" data-copy>( ͡° ͜ʖ ͡°)✧</button><button type="button" data-copy>(▀ワḼ́▀ワ ワ)</button><button type="button" data-copy>( •_•)>⌐■-■</button><button type="button" data-copy>( ⌐■_■)</button></div>
+    <div class="meta">FJ-02 with sparkle · FJ-13 sparkle deleted</div>
+  </div>
+
+  <div class="act" id="force">
+    <div class="id">force</div>
+    <div class="hy">ուժ · the room must move</div>
+    <button class="face" type="button" data-copy>(ง'̀-'́)ง</button>
+    <div class="slots">
+      <b class="ex">E</b><span>a will that will not stay seated</span>
+      <b class="ch">C</b><span>fist, flex, barrel</span>
+      <b class="ti">T</b><span>now</span>
+    </div>
+    <div class="vars"><button type="button" data-copy>ᕦ(ò_óˇ)ᕤ</button><button type="button" data-copy>(ﾉ￣▽￣)┻┳＝一</button><button type="button" data-copy>( -_•)╦̵̵ͯ╤─</button></div>
+    <div class="meta">FJ-06 · the walk names a prop already on the table</div>
+  </div>
+
+  <div class="act" id="walk">
+    <div class="id">walk</div>
+    <div class="hy">քայլ · motion treated as proof</div>
+    <button class="face" type="button" data-copy>ᕕ( ᐜ )ᕗ</button>
+    <div class="slots">
+      <b class="ex">E</b><span>a body in transit</span>
+      <b class="ch">C</b><span>carry the claim forward</span>
+      <b class="ti">T</b><span>duration of a walk</span>
+    </div>
+    <div class="vars"><button type="button" data-copy>ᕕ( ᑛ )ᕗ</button><button type="button" data-copy>┌( >_<)┘</button></div>
+    <div class="meta">FJ-04 march · FJ-08 flee · FJ-14 relapse. Same verb, different time.</div>
+  </div>
+
+  <div class="act" id="ack">
+    <div class="id">ack</div>
+    <div class="hy">ընդունում · received, not agreed</div>
+    <button class="face" type="button" data-copy>(；一_一)</button>
+    <div class="slots">
+      <b class="ex">E</b><span>polite presence</span>
+      <b class="ch">C</b><span>mark the room wrong, stay</span>
+      <b class="ti">T</b><span>; ゞ</span>
+    </div>
+    <div class="vars"><button type="button" data-copy>(^_^;)</button><button type="button" data-copy>(・・;)ゞ</button><button type="button" data-copy>(＠_＠;)</button></div>
+  </div>
+
+  <div class="act" id="collapse">
+    <div class="id">collapse</div>
+    <div class="hy">փլուզում · blame moves, or the self leaks</div>
+    <button class="face" type="button" data-copy>(╯°□°)╯︵ ┻━┻</button>
+    <div class="slots">
+      <b class="ex">E</b><span>the self or the room as damaged</span>
+      <b class="ch">C</b><span>flip, shout, lie down</span>
+      <b class="ti">T</b><span>︵ inversion</span>
+    </div>
+    <div class="vars"><button type="button" data-copy>(ಥ＿ಥ)</button><button type="button" data-copy>( T_T)</button><button type="button" data-copy>(´ཀ`」 ∠)</button><button type="button" data-copy>ʕノ•ᴥ•ʔノ ︵ ┻━┻</button></div>
+    <div class="meta">FJ-09 rage · FJ-10 sorrow. Flip can take a table or another face.</div>
+  </div>
+
+  <div class="act" id="repair">
+    <div class="id">repair</div>
+    <div class="hy">վերականգնում · form restored, habit not</div>
+    <button class="face" type="button" data-copy>┬─┬ノ( º _ ºノ)</button>
+    <div class="slots">
+      <b class="ex">E</b><span>the table as a repairable world</span>
+      <b class="ch">C</b><span>set upright</span>
+      <b class="ti">T</b><span>after</span>
+    </div>
+    <div class="vars"><button type="button" data-copy>┬──┬ ノ(ò_óノ)</button><button type="button" data-copy>(ಥ‿ಥ)</button></div>
+    <div class="meta">FJ-12 · thin class. 🙏 is a different verb.</div>
+  </div>
+
+  <div class="act" id="shrug">
+    <div class="id">shrug</div>
+    <div class="hy">ուսի թոթվում · refuse the address</div>
+    <button class="face" type="button" data-copy>¯\_(ツ)_/¯</button>
+    <div class="slots">
+      <b class="ex">E</b><span>a warning already in the room</span>
+      <b class="ch">C</b><span>do not take it as yours</span>
+      <b class="ti">T</b><span>open again</span>
+    </div>
+    <div class="vars"><button type="button" data-copy>┐(￣ヘ￣)┌</button><button type="button" data-copy>乞(ᗒᗣᗕ)ㄯ</button><button type="button" data-copy>ヽ(ー_ー )ノ</button></div>
+    <div class="meta">FJ-01 uses ┐(￣ヘ￣)┌ · mapping to 🤷 is translation</div>
+  </div>
+
+  <div class="act" id="alliance">
+    <div class="id">alliance</div>
+    <div class="hy">դաշինք · closeness handed over</div>
+    <button class="face" type="button" data-copy>(づ￣ ³￣)づ</button>
+    <div class="slots">
+      <b class="ex">E</b><span>closeness already assumed</span>
+      <b class="ch">C</b><span>hug, kiss, hand the form</span>
+      <b class="ti">T</b><span>now shared</span>
+    </div>
+    <div class="vars"><button type="button" data-copy>(っ⌒‿⌒)っ</button><button type="button" data-copy>⊂(￣▽￣)⊃</button><button type="button" data-copy>(´ε｀ )♡</button></div>
+  </div>
+
+  <div class="act" id="shift">
+    <div class="id">shift</div>
+    <div class="hy">տեսակափոխում · same verb, new agent</div>
+    <button class="face" type="button" data-copy>ʕ•ᴥ•ʔ</button>
+    <div class="slots">
+      <b class="ex">E</b><span>a non-human mouth in the turn</span>
+      <b class="ch">C</b><span>keep the verb, change who</span>
+      <b class="ti">T</b><span>after the human grammar fails</span>
+    </div>
+    <div class="vars"><button type="button" data-copy>ʕｫᴥｩʔ</button><button type="button" data-copy>ʕノ•ᴥ•ʔノ ︵ ┻━┻</button></div>
+    <div class="meta">Not a new flip. A new patient / speaker for an old sentence.</div>
+  </div>
+
+  <div class="act" id="hail">
+    <div class="id">hail</div>
+    <div class="hy">ողջույն · an available speaker waves</div>
+    <button class="face" type="button" data-copy>ヽ(•‿•)ノ</button>
+    <div class="slots">
+      <b class="ex">E</b><span>an available speaker</span>
+      <b class="ch">C</b><span>wave the result into the room</span>
+      <b class="ti">T</b><span>ノ release</span>
+    </div>
+    <div class="vars"><button type="button" data-copy>(´• ω •`)ﾉ</button><button type="button" data-copy>(ﾉ◕ヮ◕)ﾉ*:´ﾟ✧</button><button type="button" data-copy>٩(>‿<)۶</button></div>
+    <div class="meta">FJ-05 premature joy is hail named before the work</div>
+  </div>
+
+  <h2>Particles</h2>
+  <p class="how">Not acts. Time marks that ride an act.</p>
+  <div class="part"><span class="k">？</span><span>slot open — not yet</span></div>
+  <div class="part"><span class="k">;</span><span>stress kept inside the turn</span></div>
+  <div class="part"><span class="k">ゞ</span><span>ack without agreement</span></div>
+  <div class="part"><span class="k">zzZ</span><span>time held as sleep</span></div>
+  <div class="part"><span class="k">｡oO</span><span>time held as thought</span></div>
+  <div class="part"><span class="k">✧</span><span>costume of novelty</span></div>
+  <div class="part"><span class="k">︵</span><span>inversion — the room flips</span></div>
+  <div class="part"><span class="k">ノ</span><span>release / wave</span></div>
+  <div class="part"><span class="k">♡</span><span>feeling handed over</span></div>
+  <div class="part"><span class="k">♪</span><span>joy-time — handwriting, not a new verb</span></div>
+
+  <h2>Compose</h2>
+  <p class="how">l_arm frame_l eye_l mouth eye_r frame_r r_arm · motion · prop · particle. Swap the agent, keep the verb: that is shift. Delete the particle, keep the face: that is mask without novelty (FJ-13).</p>
+
   <footer>encoding: emoticon_string · not emoji · FJ-14 → FJ-01</footer>
 </main>
+<script>
+const flash = (el) => {
+  el.dataset.copied = "1";
+  setTimeout(() => { delete el.dataset.copied; }, 900);
+};
+document.querySelectorAll("[data-copy]").forEach((el) => {
+  el.addEventListener("click", async () => {
+    const text = (el.getAttribute("data-copy") || el.textContent || "").trim();
+    try { await navigator.clipboard.writeText(text); } catch (_) {}
+    flash(el);
+  });
+});
+</script>
 </body>
 </html>
