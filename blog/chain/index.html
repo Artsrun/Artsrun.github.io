@@ -13,7 +13,7 @@
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 1rem 1rem 1.1rem;
-  margin: 1.4rem 0 1.2rem;
+  margin: 1.1rem 0 1.2rem;
 }
 .q-label {
   font-size: .68rem;
@@ -21,8 +21,8 @@
   text-transform: uppercase;
   color: var(--dim);
 }
-.question { margin: .4rem 0 0; font-size: 1.15rem; line-height: 1.35; }
-.pills { display: flex; gap: .45rem; flex-wrap: wrap; margin-top: .85rem; }
+.question { margin: .35rem 0 0; font-size: 1.12rem; line-height: 1.35; }
+.pills { display: flex; gap: .45rem; flex-wrap: wrap; margin-top: .75rem; }
 .chip, .ctrl, .dot {
   font-family: ui-monospace, Menlo, Consolas, monospace;
   background: #1c1c20;
@@ -36,44 +36,56 @@
   font-size: .75rem;
 }
 .chip[aria-pressed="true"] { border-color: var(--acc); color: var(--acc); }
-.stage { text-align: center; padding: .7rem 0 .2rem; }
+.chip .job { color: var(--dim); font-size: .68rem; margin-left: .2rem; }
+.chip[aria-pressed="true"] .job { color: var(--acc); opacity: .7; }
+.stage { text-align: center; padding: .55rem 0 .15rem; }
 .beatno { font-size: .68rem; letter-spacing: .32em; text-transform: uppercase; color: var(--dim); }
 .face {
   font-family: ui-monospace, Menlo, Consolas, "Noto Sans Mono", monospace;
-  font-size: clamp(28px, 8vw, 56px);
+  font-size: clamp(28px, 8vw, 52px);
   line-height: 1.35;
-  padding: .8rem 0 .35rem;
+  padding: .65rem 0 .2rem;
   overflow-x: auto;
   white-space: nowrap;
+}
+.act-row {
+  display: flex;
+  gap: .45rem;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: wrap;
 }
 .act-name {
   font-family: ui-monospace, Menlo, Consolas, monospace;
   color: var(--acc);
-  letter-spacing: .18em;
-  font-size: .72rem;
+  letter-spacing: .16em;
+  font-size: .7rem;
   text-transform: uppercase;
 }
-.hy { color: var(--teal); font-size: .82rem; margin-top: .3rem; }
-.thought { margin: .55rem 0 0; min-height: 3.1em; color: #d8d3c6; }
-.slots { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: .45rem; margin-top: .8rem; }
-.slot {
+.hy { color: var(--teal); font-size: .78rem; }
+.thought { margin: .5rem 0 0; min-height: 2.6em; color: #d8d3c6; }
+.slots {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .2rem .55rem;
+  margin-top: .7rem;
+  padding: .55rem .65rem;
   border: 1px solid var(--line);
   border-radius: 10px;
-  padding: .55rem .5rem;
-  font-size: .72rem;
-  line-height: 1.4;
-  color: var(--dim);
   font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: .72rem;
+  line-height: 1.45;
+  color: var(--dim);
 }
-.slot b { display: block; letter-spacing: .12em; font-weight: 600; margin-bottom: .25rem; font-size: .62rem; }
-.slot.ex b { color: var(--acc); }
-.slot.ch b { color: var(--red); }
-.slot.ti b { color: var(--teal); }
-.controls { display: flex; gap: .45rem; flex-wrap: wrap; justify-content: center; margin: .9rem 0 .2rem; }
+.slots b { font-weight: 600; letter-spacing: .1em; font-size: .62rem; }
+.slots .ex { color: var(--acc); }
+.slots .ch { color: var(--red); }
+.slots .ti { color: var(--teal); }
+.controls { display: flex; gap: .45rem; flex-wrap: wrap; justify-content: center; margin: .85rem 0 .15rem; }
 .ctrl { border-radius: 10px; padding: .45rem .7rem; font-size: .75rem; }
 .ctrl.primary { border-color: var(--acc); color: var(--acc); }
 .ctrl:disabled { opacity: .4; cursor: not-allowed; }
-.rail { display: flex; gap: .35rem; flex-wrap: wrap; justify-content: center; margin-top: .8rem; }
+.rail { display: flex; gap: .35rem; flex-wrap: wrap; justify-content: center; margin-top: .7rem; }
 .dot {
   width: 1.7rem; height: 1.7rem; border-radius: 50%;
   font-size: .65rem; display: grid; place-items: center;
@@ -85,78 +97,63 @@
   background: #101012;
   border: 1px dashed var(--line);
   border-radius: 10px;
-  padding: .7rem .75rem;
+  padding: .65rem .7rem;
   font-size: .72rem;
-  line-height: 1.7;
+  line-height: 1.65;
   color: var(--dim);
-  min-height: 6.4em;
+  min-height: 4.2em;
   white-space: pre-wrap;
-  margin-top: .45rem;
+  margin-top: .4rem;
 }
 .tape .now { color: var(--fg); }
-@media (max-width: 520px) {
-  .slots { grid-template-columns: 1fr; }
-}
+.how { margin: 0 0 1rem; color: #d8d3c6; }
+.how + .how { margin-top: -.4rem; }
 </style>
 </head>
 <body>
 <main>
   <nav><a href="/">Hub</a><a href="/projects/">Projects</a><a href="/blog/" aria-current="page">Blog</a></nav>
   <h1>Chain of thought</h1>
-  <p class="date">15 Sep 2026 · emoticon_string · chain v1.0</p>
-  <p class="op">CoT = existence + change + time, written as a sequence of acts</p>
-  <div class="prose">
-    <p>A chain of thought is not an inner monologue. It is social repetition compressed into one mouth. Eyes and mouth name what exists. Arms and props name what happens. Particles name when. Emoji freezes a noun. Kaomoji keeps the syntax.</p>
-    <p>Three tapes below. <strong>encoding</strong> walks the shrug against UTS #51. <strong>plan</strong> compresses the Fool’s Journey. <strong>repair</strong> keeps the flip-verb and changes the agent. Play, step, or jump the numbered rail.</p>
-  </div>
+  <p class="date">15 Sep 2026 · emoticon_string · chain v1.1</p>
+  <p class="op">face · move · when — one act per beat</p>
+  <p class="how">Not an inner monologue. A mouth repeating a social act: what is here, what changes, when.</p>
+  <p class="how">Pick a tape. Play. The log below the rail is the chain.</p>
   <section class="scene" aria-live="polite">
-    <div class="q-label">problem on the table</div>
+    <div class="q-label">on the table</div>
     <p class="question" id="q">Is ¯\_(ツ)_/¯ an emoji?</p>
     <div class="pills" role="tablist">
-      <button class="chip" id="p0" type="button" aria-pressed="true">encoding</button>
-      <button class="chip" id="p1" type="button" aria-pressed="false">plan</button>
-      <button class="chip" id="p2" type="button" aria-pressed="false">repair</button>
+      <button class="chip" id="p0" type="button" aria-pressed="true">encoding <span class="job">string</span></button>
+      <button class="chip" id="p1" type="button" aria-pressed="false">plan <span class="job">scheme</span></button>
+      <button class="chip" id="p2" type="button" aria-pressed="false">repair <span class="job">agent</span></button>
     </div>
     <div class="stage">
       <div class="beatno" id="beatno">01 / 08</div>
       <div class="face" id="face">(・・？)</div>
-      <div class="act-name" id="act">question</div>
-      <div class="hy" id="hy">հարց · the face opens a slot, not an answer</div>
+      <div class="act-row">
+        <div class="act-name" id="act">question</div>
+        <div class="hy" id="hy">հարց</div>
+      </div>
       <p class="thought" id="thought">Receive the string. Do not translate it yet.</p>
     </div>
-    <div class="slots">
-      <div class="slot ex"><b>EXISTENCE</b><span id="ex">a question already in the room</span></div>
-      <div class="slot ch"><b>CHANGE</b><span id="ch">hold the turn open</span></div>
-      <div class="slot ti"><b>TIME</b><span id="ti">？ particle — not yet</span></div>
+    <div class="slots" aria-label="existence change time">
+      <b class="ex">E</b><span id="ex">question already here</span>
+      <b class="ch">C</b><span id="ch">hold the turn</span>
+      <b class="ti">T</b><span id="ti">not yet</span>
     </div>
     <div class="controls">
-      <button class="ctrl" id="prev" type="button">← prev</button>
+      <button class="ctrl" id="prev" type="button">←</button>
       <button class="ctrl primary" id="play" type="button">play</button>
-      <button class="ctrl" id="next" type="button">next →</button>
+      <button class="ctrl" id="next" type="button">→</button>
       <button class="ctrl" id="reset" type="button">reset</button>
     </div>
     <div class="rail" id="rail" aria-label="steps"></div>
-    <div style="margin-top:1rem">
-      <div class="q-label">thought tape</div>
+    <div style="margin-top:.85rem">
+      <div class="q-label">tape</div>
       <div class="tape" id="tape"></div>
     </div>
   </section>
-  <h2>Protocol</h2>
-  <p class="sub" style="margin-bottom:.4rem">
-    <span class="k">(・・？)</span> opens ·
-    <span class="k">(￢_￢)</span> withholds ·
-    <span class="k">(´-`).｡oO</span> holds time ·
-    <span class="k">( ͡° ͜ʖ ͡°)✧</span> masks ·
-    <span class="k">(ง'̀-'́)ง</span> tests ·
-    <span class="k">ᕕ( ᐛ )ᕗ</span> walks ·
-    <span class="k">(；一_一)</span> marks ·
-    <span class="k">(╯°□°)╯︵ ┻━┻</span> breaks ·
-    <span class="k">┬─┬ノ( º _ ºノ)</span> restores ·
-    <span class="k">¯\_(ツ)_/¯</span> refuses closure ·
-    <span class="k">ヽ(•‿•)ノ</span> publishes
-  </p>
-  <p class="sub" style="margin-top:1.6rem"><a href="/fools-journey/lexicon/">Ten-act lexicon →</a> · <a href="/fools-journey/">14 beats →</a> · <a href="/blog/kaomoji-unicode/">emoticon ≠ emoji →</a></p>
-  <footer>encoding: emoticon_string · not emoji · FACE = EXISTENCE + CHANGE + TIME + WHO REPEATS IT</footer>
+  <p class="sub"><a href="/fools-journey/lexicon/">act lexicon →</a> · <a href="/fools-journey/">14 beats →</a> · <a href="/blog/kaomoji-unicode/">emoticon ≠ emoji →</a></p>
+  <footer>encoding: emoticon_string · mapping 🤷 is translation, not identity</footer>
 </main>
 <script src="/blog/chain/chain.js"></script>
 </body>
