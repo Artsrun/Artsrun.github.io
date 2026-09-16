@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crash course · CS → ML → RAG</title>
+<style>
+  :root {
+    --paper: #F3E8C8; --ink: #0E1726; --muted: #334155; --card: #FFFBF2;
+    --line: #C9B37A; --navy: #0E1C38; --cream: #F7EFD4; --gold: #8A6914;
+    --right: #166534; --wrong: #991B1B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--paper);
+    background-image: repeating-linear-gradient(0deg, transparent 0 31px, rgba(14,23,38,.06) 32px);
+    color: var(--ink); min-height: 100dvh; padding: 1rem 0.9rem 2.5rem; line-height: 1.45;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .wrap { width: 100%; max-width: 460px; margin: 0 auto; }
+  a { color: var(--ink); }
+  .back { font-size: 0.84rem; font-weight: 600; margin-bottom: 0.45rem; display: inline-block; }
+  .kicker { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: var(--gold); }
+  h1 { font-size: 1.45rem; letter-spacing: -0.03em; margin: 0.15rem 0 0.35rem; }
+  .lede { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.85rem; }
+  .tracks { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.85rem; }
+  .tracks button {
+    border: 1px solid var(--line); background: var(--card); color: var(--ink);
+    border-radius: 999px; padding: 0.42rem 0.7rem; font: 650 0.78rem/1 system-ui, sans-serif; min-height: 36px;
+  }
+  .tracks button.on { background: var(--navy); color: var(--cream); border-color: var(--navy); }
+  .bar { display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--muted); margin-bottom: 0.35rem; }
+  .bar b { color: var(--ink); }
+  .pl { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.25rem; display: flex; justify-content: space-between; }
+  .pl b { color: var(--ink); font-variant-numeric: tabular-nums; }
+  .meter { height: 8px; background: #E6D7A8; border-radius: 99px; overflow: hidden; margin-bottom: 0.75rem; }
+  .meter > i { display: block; height: 100%; width: 10%; background: var(--navy); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1.05rem 1rem 1rem; }
+  .tag { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .q { font-size: 1.12rem; font-weight: 650; line-height: 1.4; margin-bottom: 0.85rem; }
+  .opt {
+    background: #fff; border: 1.5px solid var(--line); border-radius: 12px;
+    padding: 0.82rem 0.85rem; margin-bottom: 0.45rem; font-size: 0.96rem; line-height: 1.35; min-height: 48px; cursor: pointer;
+  }
+  .opt.ok { border-color: var(--right); background: #ECFDF3; color: var(--right); }
+  .opt.bad { border-color: var(--wrong); background: #FEF2F2; color: var(--wrong); }
+  .opt.off { pointer-events: none; }
+  .ex { display: none; margin: 0.55rem 0 0.2rem; padding-left: 0.65rem; border-left: 3px solid var(--gold); color: var(--muted); font-size: 0.9rem; line-height: 1.45; }
+  .ex.on { display: block; }
+  button.next, button.again {
+    width: 100%; margin-top: 0.8rem; border: 0; border-radius: 12px; padding: 0.88rem;
+    font: 700 1rem/1 system-ui, sans-serif; background: var(--navy); color: var(--cream); min-height: 48px;
+  }
+  button.next:disabled { opacity: 0.35; }
+  .done { text-align: center; }
+  .done h2 { font-size: 1.3rem; margin-bottom: 0.3rem; }
+  .skills { text-align: left; margin: 0.8rem 0 0.2rem; font-size: 0.88rem; }
+  .skills div { display: flex; justify-content: space-between; padding: 0.28rem 0; border-bottom: 1px solid var(--line); }
+  .path { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.3rem; margin: 0.2rem 0 0.85rem; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; text-align: center; color: var(--muted); }
+  .path b { display: block; color: var(--ink); font-size: 0.78rem; margin-bottom: 0.1rem; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="index.html">← digest</a>
+    <p class="kicker">Crash course</p>
+    <h1>CS → ML → RAG</h1>
+    <p class="lede">Sixteen items. Four skills. Filter a track or run the full path. P(L) updates per skill after every answer.</p>
+    <div class="path">
+      <div><b>CS</b>structure</div>
+      <div><b>ML</b>fit</div>
+      <div><b>LLM</b>token</div>
+      <div><b>RAG</b>retrieve</div>
+    </div>
+    <div class="tracks" id="tracks"></div>
+    <div class="bar"><span>Item <b id="cur">1</b> / <span id="tot">16</span></span><span>Score <b id="score">0</b></span></div>
+    <div class="pl"><span>P(L) <span id="pltag">—</span></span><b id="plval">0.10</b></div>
+    <div class="meter"><i id="plfill"></i></div>
+    <div class="card" id="box">
+      <div class="tag" id="tag"></div>
+      <div class="q" id="q"></div>
+      <div id="opts"></div>
+      <div class="ex" id="ex"></div>
+      <button class="next" id="next" disabled>Next</button>
+    </div>
+    <div class="card done" id="done" hidden>
+      <h2 id="title"></h2>
+      <p class="lede" id="msg"></p>
+      <div class="skills" id="skills"></div>
+      <button class="again" id="again">Run again</button>
+    </div>
+  </div>
+<script>
+const Q = [
+  { skill:"CS", tag:"CS · complexity", q:"Binary search on a sorted array of n items is…",
+    opts:["O(n)","O(log n)","O(n log n)","O(1) always"], ok:1,
+    ex:"Each step halves the remaining interval. That is logarithmic time." },
+  { skill:"CS", tag:"CS · structure", q:"A stack is the right structure when you need…",
+    opts:["First-in, first-out","Last-in, first-out","Random key lookup","Sorted order by default"], ok:1,
+    ex:"Stack = LIFO. Queue = FIFO. Hash map = average O(1) key lookup." },
+  { skill:"CS", tag:"CS · hash", q:"Average-case lookup in a hash map is…",
+    opts:["O(n)","O(log n)","O(1)","O(n²)"], ok:2,
+    ex:"A good hash spreads keys. Worst case still degrades toward O(n)." },
+  { skill:"CS", tag:"CS · algorithm", q:"An algorithm is…",
+    opts:["A place to store data","A finite procedure that transforms input to output","A trained weight file","A GPU shader"], ok:1,
+    ex:"Data structures hold state. Algorithms are the steps. Models later reuse both." },
+  { skill:"ML", tag:"ML · supervision", q:"Supervised learning needs…",
+    opts:["Only unlabeled raw text","Labeled input–target pairs","A production vector database","Human approval on every token"], ok:1,
+    ex:"The target (label) is what the model is trained to predict." },
+  { skill:"ML", tag:"ML · overfit", q:"Overfitting means the model…",
+    opts:["Cannot fit the training set","Memorizes train data and fails on new data","Has a learning rate of 0","Only works on GPUs"], ok:1,
+    ex:"Train loss looks good. Held-out loss does not. Regularize or get more data." },
+  { skill:"ML", tag:"ML · loss", q:"Loss is…",
+    opts:["The model’s final accuracy","A scalar error the optimizer reduces","The size of the batch","The number of epochs"], ok:1,
+    ex:"Optimizer steps weights to drive loss down. Accuracy is a later readout." },
+  { skill:"ML", tag:"ML · split", q:"Why hold out a test set?",
+    opts:["To train faster","To tune learning rate only","To measure generalization on unseen data","To store embeddings"], ok:2,
+    ex:"Train fits. Validation tunes. Test reports. Mixing them leaks the answer." },
+  { skill:"LLM", tag:"LLM · token", q:"A token is…",
+    opts:["A full English word always","A subword (or byte) unit the model reads and writes","A GPU kernel","A row in a spreadsheet"], ok:1,
+    ex:"Tokenizers split text into a fixed vocabulary. Output is sampled token by token." },
+  { skill:"LLM", tag:"LLM · embed", q:"An embedding is…",
+    opts:["A compressed password","A vector that places text in a space where neighbors are related","The raw PDF bytes","The system prompt"], ok:1,
+    ex:"Near vectors ≈ related meaning. This is the index RAG searches." },
+  { skill:"LLM", tag:"LLM · attention", q:"Attention does what, in one line?",
+    opts:["Deletes half the context","Lets each token mix information from other tokens by relevance","Converts images to WAV","Stores the KV cache on disk"], ok:1,
+    ex:"Weights say which past tokens matter now. That mix is the context the next layer sees." },
+  { skill:"LLM", tag:"LLM · logit", q:"Logits are…",
+    opts:["Probabilities that already sum to 1","Raw unnormalized scores before softmax","The learning rate","The tokenizer vocab file"], ok:1,
+    ex:"Softmax turns logits into a distribution. Sampling then picks the next token." },
+  { skill:"RAG", tag:"RAG · loop", q:"RAG, in order, is…",
+    opts:["Generate, then hope","Fine-tune the whole model on every question","Retrieve relevant chunks, then generate with them in context","Raise temperature until it cites sources"], ok:2,
+    ex:"Retrieval grounds the prompt. Generation still uses the same frozen model unless you train." },
+  { skill:"RAG", tag:"RAG · chunk", q:"Documents are chunked because…",
+    opts:["GPUs only accept 16 bytes","The context window and the embedder both have size limits","HTML forbids long pages","It trains the tokenizer"], ok:1,
+    ex:"Small overlapping chunks retrieve cleaner passages than one giant blob." },
+  { skill:"RAG", tag:"RAG · train", q:"Default RAG does which of these?",
+    opts:["Retrains all model weights each query","Adds retrieved text to the prompt; weights stay frozen","Deletes the system prompt","Replaces softmax with argmax"], ok:1,
+    ex:"You update the index, not the base model. Fine-tuning is a different job." },
+  { skill:"RAG", tag:"RAG · search", q:"Vector search finds…",
+    opts:["Exact string matches only","Nearest embedding neighbors to the query","The lowest loss checkpoint","Random rows from disk"], ok:1,
+    ex:"Embed the query. Rank stored chunk vectors by similarity. Then pack the top hits into context." }
+];
+const P = { L0:0.12, T:0.18, G:0.22, S:0.10 };
+const skills = ["CS","ML","LLM","RAG"];
+const state = Object.fromEntries(skills.map(s => [s, { pL:P.L0, hist:[] }]));
+let track = "ALL", deck = [], i = 0, score = 0, lock = false;
+const $ = id => document.getElementById(id);
+function bayes(pL, correct) {
+  const { G, S, T } = P;
+  const post = correct
+    ? (pL*(1-S)) / (pL*(1-S) + (1-pL)*G)
+    : (pL*S) / (pL*S + (1-pL)*(1-G));
+  return post + (1-post)*T;
+}
+function build() {
+  deck = (track === "ALL" ? Q.slice() : Q.filter(q => q.skill === track)).map((q,n)=>({...q,_id:n}));
+  i = 0; score = 0; lock = false;
+  $("tot").textContent = deck.length;
+  $("score").textContent = score;
+  $("done").hidden = true;
+  $("box").hidden = false;
+  draw();
+}
+function showPL(skill) {
+  const p = state[skill].pL;
+  $("pltag").textContent = skill;
+  $("plval").textContent = p.toFixed(3);
+  $("plfill").style.width = Math.round(p*100) + "%";
+}
+function draw() {
+  if (i >= deck.length) return finish();
+  const c = deck[i];
+  lock = false;
+  $("cur").textContent = i+1;
+  $("tag").textContent = c.tag;
+  $("q").textContent = c.q;
+  $("ex").className = "ex";
+  $("ex").textContent = c.ex;
+  $("next").disabled = true;
+  $("next").textContent = i === deck.length-1 ? "Finish" : "Next";
+  showPL(c.skill);
+  const box = $("opts");
+  box.innerHTML = "";
+  c.opts.forEach((t,n) => {
+    const d = document.createElement("div");
+    d.className = "opt";
+    d.textContent = t;
+    d.onclick = () => pick(n, d, c);
+    box.appendChild(d);
+  });
+}
+function pick(n, el, c) {
+  if (lock) return;
+  lock = true;
+  const ok = n === c.ok;
+  [...$("opts").children].forEach(o => o.classList.add("off"));
+  el.classList.add(ok ? "ok" : "bad");
+  if (!ok) $("opts").children[c.ok].classList.add("ok");
+  if (ok) { score++; $("score").textContent = score; }
+  const st = state[c.skill];
+  st.pL = bayes(st.pL, ok);
+  st.hist.push(st.pL);
+  showPL(c.skill);
+  $("ex").classList.add("on");
+  $("next").disabled = false;
+}
+function finish() {
+  $("box").hidden = true;
+  $("done").hidden = false;
+  const pct = Math.round(100*score/deck.length);
+  $("title").textContent = pct === 100 ? "Path clear" : pct >= 70 ? "Hold the path" : "Drill the weak skill";
+  $("msg").textContent = score + "/" + deck.length + " · " + pct + "%";
+  $("skills").innerHTML = skills.map(s => {
+    const p = state[s].pL;
+    return "<div><span>"+s+"</span><b>"+p.toFixed(3)+(p>=0.95?" · mastered":"")+"</b></div>";
+  }).join("");
+}
+$("next").onclick = () => { i++; draw(); };
+$("again").onclick = () => {
+  skills.forEach(s => { state[s] = { pL:P.L0, hist:[] }; });
+  build();
+};
+const tb = $("tracks");
+["ALL", ...skills].forEach(name => {
+  const b = document.createElement("button");
+  b.textContent = name;
+  b.className = name === "ALL" ? "on" : "";
+  b.onclick = () => {
+    track = name;
+    [...tb.children].forEach(x => x.classList.toggle("on", x.textContent === name));
+    skills.forEach(s => { state[s] = { pL:P.L0, hist:[] }; });
+    build();
+  };
+  tb.appendChild(b);
+});
+build();
+</script>
+</body>
+</html>

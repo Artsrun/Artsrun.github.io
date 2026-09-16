@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Digest · Quiz · Agent</title>
+<style>
+  :root {
+    --paper: #F3E8C8;
+    --ink: #0E1726;
+    --muted: #334155;
+    --navy: #0E1C38;
+    --cream: #F7EFD4;
+    --line: #C9B37A;
+    --gold: #8A6914;
+    --card: #FFFBF2;
+    --right: #166534;
+    --wrong: #991B1B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    background-image: repeating-linear-gradient(0deg, transparent 0 31px, rgba(14,23,38,.06) 32px);
+    padding: 1rem 0.9rem 2.6rem;
+    line-height: 1.45;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .wrap { width: 100%; max-width: 460px; margin: 0 auto; }
+  .kicker {
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 700; color: var(--gold);
+  }
+  h1 { font-size: 1.5rem; letter-spacing: -0.03em; margin: 0.15rem 0 0.4rem; }
+  .lede { font-size: 0.98rem; color: var(--muted); margin-bottom: 0.85rem; }
+  .navy {
+    background:
+      repeating-linear-gradient(135deg, rgba(247,239,212,.05) 0 2px, transparent 2px 7px),
+      var(--navy);
+    color: var(--cream);
+    border-radius: 14px;
+  }
+  .stage { padding: 0.8rem 0.75rem 0.7rem; margin-bottom: 0.8rem; }
+  .stage-top {
+    display: flex; justify-content: space-between;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: #E8D7A0; margin-bottom: 0.35rem;
+  }
+  #ascii {
+    display: block; margin: 0 auto;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 11px; line-height: 11px;
+    color: var(--cream);
+    white-space: pre; text-align: center;
+    user-select: none; touch-action: none;
+    min-height: 198px;
+  }
+  .pipe {
+    margin-top: 0.5rem; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.02em; color: #E8D7A0; text-align: center;
+  }
+  .hint { margin-top: 0.35rem; font-size: 0.82rem; color: #D5C9A4; text-align: center; }
+  .grid { display: grid; gap: 0.5rem; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  a.tile {
+    display: block; text-decoration: none; color: var(--ink);
+    background: var(--card); border: 1.5px solid var(--line);
+    border-radius: 12px; padding: 0.85rem 0.9rem;
+  }
+  a.tile strong { display: block; font-size: 1rem; }
+  a.tile em { display: block; font-style: normal; font-size: 0.84rem; color: var(--muted); margin-top: 0.2rem; line-height: 1.35; }
+  a.navy-tile { color: var(--cream); border-color: #1C3260; }
+  a.navy-tile em { color: #D5C9A4; }
+  .card {
+    background: var(--card); border: 1.5px solid var(--line);
+    border-radius: 14px; padding: 1rem; margin-top: 0.8rem;
+  }
+  .tag { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.35rem; }
+  .q { font-size: 1.12rem; font-weight: 650; line-height: 1.4; margin-bottom: 0.75rem; }
+  .opt {
+    background: #fff; border: 1.5px solid var(--line); border-radius: 12px;
+    padding: 0.8rem 0.85rem; margin-bottom: 0.42rem;
+    font-size: 0.96rem; line-height: 1.35; min-height: 48px; cursor: pointer;
+  }
+  .opt.correct { border-color: var(--right); background: #ECFDF3; color: var(--right); }
+  .opt.wrong { border-color: var(--wrong); background: #FEF2F2; color: var(--wrong); }
+  .opt.disabled { pointer-events: none; }
+  .explain { display: none; margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted); line-height: 1.45; border-left: 3px solid var(--gold); padding-left: 0.65rem; }
+  .explain.on { display: block; }
+  .score { display: flex; justify-content: space-between; font-size: 0.84rem; color: var(--muted); margin-bottom: 0.5rem; }
+  .score b { color: var(--ink); }
+  button.action {
+    width: 100%; margin-top: 0.75rem; border: 0; border-radius: 12px;
+    padding: 0.88rem; font: 700 1rem/1 system-ui, sans-serif;
+    background: var(--navy); color: var(--cream); min-height: 48px;
+  }
+  button.action:disabled { opacity: 0.35; }
+  .done { text-align: center; }
+  .done h2 { font-size: 1.3rem; margin-bottom: 0.25rem; }
+  footer { margin-top: 1.2rem; font-size: 0.82rem; color: var(--muted); text-align: center; line-height: 1.5; }
+  footer a { color: var(--ink); font-weight: 650; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="kicker">Artsrun · digest</p>
+    <h1>AI digest + quiz</h1>
+    <p class="lede">Readable paper sheet. Navy stage for the ASCII principal. Crash course runs CS → ML → RAG.</p>
+    <section class="navy stage" id="stage">
+      <div class="stage-top"><span>ASCII principal</span><span id="meta">tap pause · drag steer</span></div>
+      <pre id="ascii" aria-hidden="true"></pre>
+      <p class="pipe">token → context → attention → logit → sample</p>
+      <p class="hint">Same shape as the torus: sample → rotate → project → 1/z → ink.</p>
+    </section>
+    <div class="grid">
+      <a class="tile navy navy-tile" href="crash.html">
+        <strong>Crash course quiz</strong>
+        <em>CS · ML · LLM · RAG — 16 cards, BKT per skill</em>
+      </a>
+      <a class="tile navy navy-tile" href="https://artsrun.github.io/web-agent-machine/">
+        <strong>Web Agent Machine</strong>
+        <em>Live browser runtime. Kernel, workers, HITL.</em>
+      </a>
+      <div class="row2">
+        <a class="tile" href="/ml-quiz/"><strong>ML Quiz</strong><em>Epoch · batch · logit</em></a>
+        <a class="tile" href="token-salad.html"><strong>Token Salad</strong><em>Why output collapses</em></a>
+      </div>
+      <div class="row2">
+        <a class="tile" href="https://artsrun.github.io/ascii-principal-motion/"><strong>Full ASCII</strong><em>Donut · hold · play</em></a>
+        <a class="tile" href="/web-agent-machine/notes/bkt-simulator.html"><strong>BKT lab</strong><em>Mastery trace</em></a>
+      </div>
+    </div>
+    <div class="card" id="quiz">
+      <div class="score"><span>Digest <b id="cur">1</b>/3</span><span>Score <b id="score">0</b></span></div>
+      <div id="qbox">
+        <div class="tag" id="tag"></div>
+        <div class="q" id="q"></div>
+        <div id="opts"></div>
+        <div class="explain" id="ex"></div>
+        <button class="action" id="next" disabled>Next</button>
+      </div>
+      <div class="done" id="done" hidden>
+        <h2 id="title"></h2>
+        <p class="lede" id="msg"></p>
+        <button class="action" id="again">Replay</button>
+      </div>
+    </div>
+    <footer>
+      Hub quiz pages. Live machine + ASCII stay on their Pages sites.<br>
+      <a href="https://github.com/Artsrun/web-agent-machine">WAM</a>
+      ·
+      <a href="https://github.com/Artsrun/ascii-principal-motion">ASCII</a>
+    </footer>
+  </div>
+<script>
+const COLS = 36, ROWS = 18, R1 = 1, R2 = 2, K2 = 5, K1 = COLS * 0.4;
+const CH = ".,-~:;=!*#$@";
+const asciiEl = document.getElementById("ascii");
+const meta = document.getElementById("meta");
+let A = 1.1, B = 0.7, dA = 0.035, dB = 0.018, run = true;
+let sx = 0, sy = 0, dragging = false, lastT = 0, moved = false;
+function frame(t) {
+  lastT = t;
+  if (run && !dragging) { A += dA; B += dB; }
+  const cosA = Math.cos(A), sinA = Math.sin(A);
+  const cosB = Math.cos(B), sinB = Math.sin(B);
+  const buf = new Array(COLS * ROWS).fill(" ");
+  const zbuf = new Float32Array(COLS * ROWS);
+  for (let th = 0; th < 6.28; th += 0.16) {
+    const ct = Math.cos(th), st = Math.sin(th);
+    for (let ph = 0; ph < 6.28; ph += 0.07) {
+      const cp = Math.cos(ph), sp = Math.sin(ph);
+      const circ = R2 + R1 * ct;
+      const x = circ * (cosB * cp + sinA * sinB * sp) - R1 * cosA * sinB * st;
+      const y = circ * (cp * sinB - cosB * sinA * sp) + R1 * cosA * cosB * st;
+      const z = cosA * circ * sp + R1 * sinA * st;
+      const ooz = 1 / (K2 + z);
+      const xp = (COLS / 2 + K1 * ooz * x) | 0;
+      const yp = (ROWS / 2 - K1 * 0.52 * ooz * y) | 0;
+      if (xp < 0 || xp >= COLS || yp < 0 || yp >= ROWS) continue;
+      const o = xp + COLS * yp;
+      if (ooz <= zbuf[o]) continue;
+      const L = (cp * sinA - ct * cosA * sp) * cosB - ct * cosA * cp - st * sinA + (cp * cosA + ct * sinA * sp) * sinB;
+      const n = (L * 8) | 0;
+      zbuf[o] = ooz;
+      buf[o] = CH[n > 0 ? (n < 12 ? n : 11) : 0];
+    }
+  }
+  let out = "";
+  for (let r = 0; r < ROWS; r++) out += buf.slice(r * COLS, r * COLS + COLS).join("") + "\n";
+  asciiEl.textContent = out;
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+const stage = document.getElementById("stage");
+stage.addEventListener("pointerdown", e => {
+  dragging = true; moved = false; sx = e.clientX; sy = e.clientY;
+  stage.setPointerCapture(e.pointerId);
+});
+stage.addEventListener("pointermove", e => {
+  if (!dragging) return;
+  const dx = e.clientX - sx, dy = e.clientY - sy;
+  if (Math.hypot(dx, dy) > 4) moved = true;
+  dA = dy * 0.003; dB = dx * 0.003;
+  A += dA; B += dB; sx = e.clientX; sy = e.clientY;
+});
+stage.addEventListener("pointerup", () => {
+  dragging = false;
+  if (!moved) { run = !run; meta.textContent = run ? "spin" : "paused"; }
+});
+const Q = [
+  { tag: "Agent", q: "Web Agent Machine is…",
+    opts: ["A chatbot wrapper", "A browser runtime: kernel, workers, HITL", "A news crawler", "A 4DGS viewer"], ok: 1,
+    ex: "The model is replaceable. The kernel and capability broker are the machine." },
+  { tag: "Quiz", q: "Token salad means sampling from…",
+    opts: ["Peak logits", "English-only vocab", "The tail of a collapsed distribution", "The system prompt"], ok: 2,
+    ex: "Peak gone → random IDs across scripts. Check weights and tokenizer first." },
+  { tag: "Path", q: "RAG adds knowledge by…",
+    opts: ["Retraining every query", "Retrieving chunks, then generating with them", "Raising temperature", "Deleting the context window"], ok: 1,
+    ex: "Index changes. Base weights stay frozen unless you separately fine-tune." }
+];
+let i = 0, score = 0, locked = false;
+const $ = id => document.getElementById(id);
+function draw() {
+  const c = Q[i];
+  $("cur").textContent = i + 1; $("score").textContent = score;
+  $("tag").textContent = c.tag; $("q").textContent = c.q;
+  $("ex").className = "explain"; $("ex").textContent = c.ex;
+  $("next").disabled = true; locked = false;
+  const box = $("opts"); box.innerHTML = "";
+  c.opts.forEach((t, n) => {
+    const d = document.createElement("div");
+    d.className = "opt"; d.textContent = t;
+    d.onclick = () => pick(n, d, c); box.appendChild(d);
+  });
+}
+function pick(n, el, c) {
+  if (locked) return; locked = true;
+  [...$("opts").children].forEach(o => o.classList.add("disabled"));
+  if (n === c.ok) { el.classList.add("correct"); score++; $("score").textContent = score; }
+  else { el.classList.add("wrong"); $("opts").children[c.ok].classList.add("correct"); }
+  $("ex").classList.add("on"); $("next").disabled = false;
+  $("next").textContent = i === Q.length - 1 ? "Finish" : "Next";
+}
+$("next").onclick = () => {
+  i++;
+  if (i >= Q.length) {
+    $("qbox").hidden = true; $("done").hidden = false;
+    const pct = Math.round(score / Q.length * 100);
+    $("title").textContent = pct === 100 ? "Digest clear" : "Open the crash course";
+    $("msg").textContent = score + "/" + Q.length + " · next: CS → ML → RAG.";
+    return;
+  }
+  draw();
+};
+$("again").onclick = () => { i = 0; score = 0; $("done").hidden = true; $("qbox").hidden = false; draw(); };
+draw();
+</script>
+</body>
+</html>
