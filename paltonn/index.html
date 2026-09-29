@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Paltonn</title>
+<meta name="description" content="Pick any number of faces. Get the 3D solid, its Greek name, and where each piece of the name comes from.">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+main { max-width: 68rem; }
+.ctrl { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; margin: 0 0 .8rem; }
+.ctrl .lbl { color: var(--dim); font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; margin-right: .25rem; }
+button { background: transparent; color: var(--fg); border: 1px solid var(--line); border-radius: 8px; padding: .4rem .75rem; font: inherit; font-size: .85rem; cursor: pointer; min-height: 2.25rem; }
+button:hover, button[aria-pressed="true"] { border-color: var(--acc); color: var(--acc); }
+#n { width: 6.5rem; background: var(--paper); color: var(--fg); border: 1px solid var(--line); border-radius: 8px; padding: .4rem .6rem; font: 600 1.1rem/1.4 ui-monospace, Menlo, Consolas, monospace; min-height: 2.25rem; }
+#n:focus { outline: none; border-color: var(--acc); }
+.stage { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 1.75rem; align-items: start; margin-top: 1.2rem; }
+@media (max-width: 780px) { .stage { grid-template-columns: minmax(0, 1fr); } }
+#view { position: relative; aspect-ratio: 1; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); overflow: hidden; touch-action: none; }
+#view canvas { display: block; width: 100%; height: 100%; }
+#tip { position: absolute; left: .8rem; bottom: .6rem; right: .8rem; font: 12px/1.4 ui-monospace, Menlo, Consolas, monospace; color: var(--dim); pointer-events: none; }
+#word { font-size: clamp(1.5rem, 3.6vw, 2.2rem); font-weight: 600; line-height: 1.2; overflow-wrap: anywhere; margin: 0 0 .35rem; }
+#word span { border-bottom: 2px solid currentColor; cursor: help; transition: opacity .15s; }
+#word.focus span:not(.on) { opacity: .35; }
+.morph { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: .1rem .9rem; padding: .55rem 0; border-top: 1px solid var(--line); transition: background .15s; }
+.morph:last-child { border-bottom: 1px solid var(--line); }
+.morph.on { background: #ffffff08; }
+.morph .seg { font-weight: 600; }
+.morph .gr { font-size: 1.05rem; }
+.morph .gr i { color: var(--dim); font-size: .85rem; margin-left: .4rem; }
+.morph .mean { grid-column: 2; color: var(--fg); font-size: .9rem; }
+.morph .note { grid-column: 2; color: var(--dim); font-size: .8rem; }
+.stats { font: .82rem/1.6 ui-monospace, Menlo, Consolas, monospace; color: var(--teal); margin: 1.1rem 0; }
+.stats span { color: var(--dim); }
+.prose p { font-size: .92rem; }
+.hint { color: var(--dim); font-size: .8rem; margin: .6rem 0 0; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<main>
+  <nav>
+    <a href="/">Hub</a>
+    <a href="/projects/">Projects</a>
+    <a href="/blog/">Blog</a>
+  </nav>
+  <h1>Paltonn</h1>
+  <p class="sub">Name any number of faces. Get the solid, its Greek name, and where every piece of the name comes from.</p>
+
+  <div class="ctrl">
+    <button id="dec" aria-label="One fewer face">−</button>
+    <input id="n" type="number" min="1" max="9999" step="1" inputmode="numeric" value="64" aria-label="Number of faces">
+    <button id="inc" aria-label="One more face">+</button>
+    <span class="lbl" style="margin-left:.25rem">faces</span>
+  </div>
+  <div class="ctrl" id="presets" aria-label="Presets"></div>
+
+  <div class="stage">
+    <div>
+      <div id="view"><div id="tip">drag to turn · hover a face</div></div>
+      <div class="ctrl" style="margin-top:.8rem">
+        <span class="lbl">Face labels</span>
+        <button data-lab="greek">α β γ</button>
+        <button data-lab="arabic">1 2 3</button>
+        <button data-lab="off">off</button>
+        <button id="spin" aria-pressed="true">spin</button>
+      </div>
+      <p class="hint" id="labhint"></p>
+    </div>
+    <section aria-live="polite">
+      <p class="date" id="kind"></p>
+      <div id="word"></div>
+      <p class="op" id="lit"></p>
+      <div id="morphs"></div>
+      <p class="stats" id="stats"></p>
+      <div class="prose" id="about"></div>
+    </section>
+  </div>
+
+  <footer><a href="/projects/">projects</a> · names built from Greek numerals + ἕδρα</footer>
+</main>
+<script type="module" src="./main.js"></script>
+</body>
+</html>
