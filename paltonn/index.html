@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Paltonn</title>
 <meta name="description" content="Pick any number of faces. Get the 3D solid, its Greek name, and where each piece of the name comes from.">
+<meta name="color-scheme" content="light dark">
+<script src="/js/theme.js"></script>
 <link rel="stylesheet" href="/css/site.css">
 <style>
 main { max-width: 68rem; }
@@ -24,7 +26,7 @@ button:hover, button[aria-pressed="true"] { border-color: var(--acc); color: var
 #word.focus span:not(.on) { opacity: .35; }
 .morph { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: .1rem .9rem; padding: .55rem 0; border-top: 1px solid var(--line); transition: background .15s; }
 .morph:last-child { border-bottom: 1px solid var(--line); }
-.morph.on { background: #ffffff08; }
+.morph.on { background: var(--wash); }
 .morph .seg { font-weight: 600; }
 .morph .gr { font-size: 1.05rem; }
 .morph .gr i { color: var(--dim); font-size: .85rem; margin-left: .4rem; }
