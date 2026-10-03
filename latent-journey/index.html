@@ -3,17 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Page-by-page stills of KimizLlm Latent Journey — a forward pass through an LLM.">
-<title>Latent Journey — page by page</title>
+<meta name="description" content="Latent Journey v2 — live canvas forward pass through an LLM.">
+<title>Latent Journey v2</title>
 <link rel="stylesheet" href="deck.css">
 </head>
 <body>
-<canvas id="field" aria-hidden="true"></canvas>
 <header class="top">
-  <p class="mark">Latent Journey</p>
+  <p class="mark">Latent Journey v2</p>
   <button type="button" id="open-index" aria-haspopup="dialog" aria-controls="index">Index</button>
 </header>
-<main class="deck" id="deck" tabindex="0" aria-label="Forward pass pages"></main>
+<main>
+  <canvas id="stage" aria-hidden="true"></canvas>
+  <section class="copy" aria-live="polite">
+    <p class="meta" id="meta"></p>
+    <h1 id="title"></h1>
+    <p class="formula" id="formula"></p>
+    <p class="note" id="note"></p>
+    <p class="links"><a href="stills.html">v1 stills</a> · <a href="https://x.com/kimizllm/status/2106089511411409081">source film</a></p>
+  </section>
+</main>
 <p class="hud" id="hud" aria-live="polite">01 / 19</p>
 <nav class="pager" aria-label="Page">
   <button type="button" id="prev">Prev</button>

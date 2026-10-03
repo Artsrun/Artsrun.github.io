@@ -1,13 +1,7 @@
-# Latent Journey — page by page
+# Latent Journey
 
-Stills from [@KimizLlm](https://x.com/kimizllm/status/2106089511411409081): a live JS + WebGL/Canvas forward pass, sampled onto chapter cards.
+v2 is a live canvas forward pass. v1 stills stay at `stills.html`.
 
-Not a re-render. Frames stay attributed to the source video.
+Source film: [@KimizLlm](https://x.com/kimizllm/status/2106089511411409081). This draw is original, not a re-render of that timeline.
 
-## Run
-
-Open `index.html`. Arrow keys or Prev/Next. `i` opens the chapter index.
-
-## Stack
-
-Vanilla. `pages.js` is the only content source. `deck.js` paints the snap deck. No build.
+Open `index.html`. Arrows, swipe, Prev/Next. `i` opens the index.

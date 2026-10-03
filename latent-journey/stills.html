@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Latent Journey — v1 stills</title>
+<link rel="stylesheet" href="deck.css">
+<style>
+  .deck { height: 100dvh; overflow-y: auto; scroll-snap-type: y mandatory; }
+  .page { scroll-snap-align: start; min-height: 100dvh; display: grid; place-items: center; padding: 64px 16px; }
+  .page img { width: min(100%, 1100px); max-height: 78dvh; object-fit: contain; border: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<header class="top"><p class="mark">v1 stills</p><a href="index.html">v2</a></header>
+<main class="deck" id="deck"></main>
+<script>
+const names = ["01-title","02-embed-lookup","03-bpe","04-token-embed","05-residual","06-embed-add","07-matmul","08-rmsnorm","09-qkv","10-rope","11-heads","12-concat","13-swiglu","14-depth","15-logits","16-topp","17-kv","18-context","19-end"];
+document.getElementById("deck").innerHTML = names.map((n) => `<section class="page"><img src="frames/${n}.jpg" alt="${n}"></section>`).join("");
+</script>
+</body>
+</html>
