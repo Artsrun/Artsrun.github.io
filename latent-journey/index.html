@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Page-by-page stills of KimizLlm Latent Journey — a forward pass through an LLM.">
+<title>Latent Journey — page by page</title>
+<link rel="stylesheet" href="deck.css">
+</head>
+<body>
+<canvas id="field" aria-hidden="true"></canvas>
+<header class="top">
+  <p class="mark">Latent Journey</p>
+  <button type="button" id="open-index" aria-haspopup="dialog" aria-controls="index">Index</button>
+</header>
+<main class="deck" id="deck" tabindex="0" aria-label="Forward pass pages"></main>
+<p class="hud" id="hud" aria-live="polite">01 / 19</p>
+<nav class="pager" aria-label="Page">
+  <button type="button" id="prev">Prev</button>
+  <button type="button" id="next">Next</button>
+</nav>
+<dialog id="index" aria-label="Chapter index">
+  <form method="dialog">
+    <header>
+      <h2>Chapters</h2>
+      <button value="cancel">Close</button>
+    </header>
+    <ol id="toc"></ol>
+  </form>
+</dialog>
+<script type="module" src="deck.js"></script>
+</body>
+</html>
