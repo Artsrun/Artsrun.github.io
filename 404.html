@@ -1,1 +1,37 @@
-<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>404 · Artsrun</title>
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<script src="/js/theme.js"></script>
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<main>
+  <nav><a href="/">Hub</a><a href="/projects/">Projects</a><a href="/blog/">Blog</a></nav>
+  <h1>404</h1>
+  <p class="sub">Nothing lives at <code id="path" class="op"></code></p>
+  <pre class="sketch">(・_・?)   the room is not built yet
+(￣ー￣)   or it moved
+(・∀・)✓  the hub knows where things are</pre>
+  <a class="row" href="/"><span class="name">hub</span><span class="meta">every live demo, one list</span></a>
+  <a class="row" id="repo" hidden><span class="name">source</span><span class="meta" id="repo-meta"></span></a>
+  <footer><a href="https://github.com/Artsrun/Artsrun.github.io/issues/new">report a dead link</a></footer>
+</main>
+<script>
+(() => {
+  const path = location.pathname;
+  document.getElementById("path").textContent = path;
+  const seg = path.split("/")[1];
+  if (!seg || seg.includes(".")) return;
+  const a = document.getElementById("repo");
+  a.href = `https://github.com/Artsrun/${encodeURIComponent(seg)}`;
+  document.getElementById("repo-meta").textContent = `github.com/Artsrun/${seg} — the demo may not be deployed`;
+  a.hidden = false;
+})();
+</script>
+</body>
+</html>

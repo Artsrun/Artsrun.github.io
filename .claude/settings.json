@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node scripts/check-site.mjs:*)",
+      "Bash(node scripts/hub-sync.mjs:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(curl -sI https://artsrun.github.io/:*)"
+    ],
+    "deny": [
+      "Bash(git push origin prod:*)",
+      "Bash(git push -f:*)",
+      "Bash(git push --force:*)"
+    ]
+  }
+}

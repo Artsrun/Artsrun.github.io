@@ -45,6 +45,7 @@
   }
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html, body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 ui-sans-serif, system-ui, sans-serif; }
 main { max-width: 42rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
 nav { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin: 0 0 1.6rem; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }

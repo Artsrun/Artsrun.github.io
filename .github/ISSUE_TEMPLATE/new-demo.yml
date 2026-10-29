@@ -1,0 +1,45 @@
+name: Add a demo to the hub
+description: Link a sibling repo's Pages demo from the hub + projects index. Claude opens the PR.
+title: "hub: add "
+labels: [hub]
+body:
+  - type: input
+    id: repo
+    attributes:
+      label: Repo
+      description: Name under github.com/Artsrun. Must have Pages on its default branch.
+      placeholder: joke-jar
+    validations:
+      required: true
+  - type: input
+    id: meta
+    attributes:
+      label: One-line meta
+      description: Shown under the name on the hub and projects page.
+      placeholder: shake for a joke
+    validations:
+      required: true
+  - type: dropdown
+    id: section
+    attributes:
+      label: Hub section
+      options:
+        - Pages demos
+        - Live elsewhere
+        - On this site
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Live URL (only for "Live elsewhere")
+      placeholder: https://grok-atlas.vercel.app
+  - type: textarea
+    id: agent
+    attributes:
+      label: Agent
+      description: Keep to let Claude open the PR. Delete to do it yourself.
+      value: |
+        @claude add this demo per AGENTS.md → "Adding a demo to the hub".
+        First curl the live path and report the status. If it is not 200, do not link it:
+        find the cause in the sibling repo (Pages off, deploy trigger on a branch that does not exist, WIP) and report it here.
