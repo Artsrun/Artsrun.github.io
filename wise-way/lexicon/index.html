@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wise lexicon · Artsrun</title>
+<meta name="description" content="Eight of the thirteen kaomoji speech acts, as the wise way uses them. Same verbs, different time.">
+<meta name="color-scheme" content="light dark">
+<script src="/js/theme.js"></script>
+<link rel="stylesheet" href="/css/site.css">
+<style>
+.k { font-family: ui-monospace, Menlo, Consolas, "Noto Sans Mono", monospace; }
+.index {
+  display: flex; flex-wrap: wrap; gap: .35rem .55rem;
+  margin: 0 0 1.2rem; font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: .72rem; letter-spacing: .04em; text-transform: none;
+}
+.index a { color: var(--dim); text-decoration: none; }
+.index a:hover { color: var(--acc); }
+.act { border-top: 1px solid var(--line); padding: 1rem 0 .95rem; scroll-margin-top: 1rem; }
+.act:last-of-type { border-bottom: 1px solid var(--line); }
+.act:target .id { color: var(--teal); }
+.act .id { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--acc); }
+.act .hy { color: var(--teal); font-size: .82rem; margin: .12rem 0 .4rem; }
+.face {
+  font-family: ui-monospace, Menlo, Consolas, "Noto Sans Mono", monospace;
+  font-size: 1.15rem; letter-spacing: .02em;
+  background: none; border: 0; color: var(--fg);
+  padding: 0; cursor: pointer; text-align: left;
+}
+.face:hover { color: var(--acc); }
+[data-copied="1"] { color: var(--teal) !important; }
+.slots, .use, .swap {
+  display: grid; grid-template-columns: auto 1fr;
+  gap: .12rem .55rem; margin-top: .55rem;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: .72rem; line-height: 1.45; color: var(--dim);
+}
+.slots b { font-weight: 600; letter-spacing: .1em; font-size: .62rem; }
+.slots .ex { color: var(--acc); }
+.slots .ch { color: var(--red); }
+.slots .ti { color: var(--teal); }
+.use { gap: .45rem .7rem; align-items: baseline; }
+.use b { font-weight: 600; letter-spacing: .1em; font-size: .62rem; color: var(--acc); white-space: nowrap; }
+.use button { display: block; background: none; border: 0; padding: 0; cursor: pointer; color: var(--fg); font-size: .95rem; white-space: nowrap; }
+.use button:hover { color: var(--acc); }
+.use span { display: block; font-family: ui-sans-serif, system-ui, sans-serif; font-size: .82rem; color: var(--prose); }
+.swap { grid-template-columns: 2rem minmax(0, 6rem) 1.2rem 1fr; font-size: .8rem; margin: .3rem 0 1.2rem; }
+.swap b { font-weight: 600; letter-spacing: .1em; font-size: .68rem; align-self: center; }
+.swap i { font-style: normal; }
+.swap .ww { color: var(--acc); }
+.swap a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.meta { color: var(--dim); font-size: .72rem; margin-top: .55rem; }
+.how { margin: 0 0 .85rem; color: var(--prose); }
+.how a { text-decoration: underline; text-underline-offset: 3px; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="/">Hub</a><a href="/wise-way/">Wise Way</a><a href="/wise-way/lexicon/" aria-current="page">Lexicon</a><a href="/wise-way/chain/">Chain</a></nav>
+  <h1>Wise lexicon</h1>
+  <p class="date">11 Nov 2026 · emoticon_string v1.1 · wise subset v1.0</p>
+  <p class="op">same verbs · different time</p>
+  <p class="how">Eight of the thirteen acts. The wise way keeps force, walk, repair and hail. It drops mask, collapse and shrug, and takes question, side, wait and ack instead.</p>
+  <p class="how">Tap a face to copy the string. Definitions are the lexicon’s. Only the use is new.</p>
+  <p class="sub"><a href="/wise-way/">the 14 lines →</a> · <a href="/wise-way/chain/">play the chain →</a> · <a href="/fools-journey/lexicon/">thirteen acts →</a> · <a href="/fools-journey/">14-beat cycle →</a> · <a href="/wise-way/wise-lexicon.json">json</a></p>
+
+  <nav class="index" aria-label="acts">
+    <a href="#question">question</a>
+    <a href="#side">side</a>
+    <a href="#walk">walk</a>
+    <a href="#ack">ack</a>
+    <a href="#wait">wait</a>
+    <a href="#force">force</a>
+    <a href="#repair">repair</a>
+    <a href="#hail">hail</a>
+  </nav>
+
+  <h2>Acts</h2>
+
+  <div class="act" id="question">
+    <div class="id">question</div>
+    <div class="hy">հարց · opens a slot, not an answer</div>
+    <button class="face" type="button" data-copy>(・・？)</button>
+    <div class="slots">
+      <b class="ex">E</b><span>a question already in the room</span>
+      <b class="ch">C</b><span>hold the turn open</span>
+      <b class="ti">T</b><span>？ — not yet</span>
+    </div>
+    <div class="use">
+      <b>WW-01</b><div><button class="k" type="button" data-copy>(・・？)</button><span>attention · The warning’s in the room. He asks: what’s new?</span></div>
+      <b>WW-03</b><div><button class="k" type="button" data-copy>(´-ω-`？)</button><span>test · He tests it once, then twice, until it’s true.</span></div>
+    </div>
+    <div class="meta">WW-01 asks where FJ-01 shrugs · WW-03 tests where FJ-03 boasts</div>
+  </div>
+
+  <div class="act" id="side">
+    <div class="id">side</div>
+    <div class="hy">կողային հայացք · attention that will not join</div>
+    <button class="face" type="button" data-copy>(￢_￢)</button>
+    <div class="slots">
+      <b class="ex">E</b><span>withheld agreement</span>
+      <b class="ch">C</b><span>glance off-axis</span>
+      <b class="ti">T</b><span>before join</span>
+    </div>
+    <div class="use">
+      <b>WW-02</b><div><button class="k" type="button" data-copy>(￢_￢)</button><span>doubt · His plan is suspect — by its private light.</span></div>
+      <b>WW-06</b><div><button class="k" type="button" data-copy>(ಠ_ಠ)</button><span>threat seen · His eye stops on a trigger long since set.</span></div>
+    </div>
+    <div class="meta">WW-02 withholds agreement from his own plan · WW-06 the eye stops before the stride trips</div>
+  </div>
+
+  <div class="act" id="walk">
+    <div class="id">walk</div>
+    <div class="hy">քայլ · motion treated as proof</div>
+    <button class="face" type="button" data-copy>ᕕ( ᐜ )ᕗ</button>
+    <div class="slots">
+      <b class="ex">E</b><span>a body in transit</span>
+      <b class="ch">C</b><span>carry the claim forward</span>
+      <b class="ti">T</b><span>duration of a walk</span>
+    </div>
+    <div class="use">
+      <b>WW-04</b><div><button class="k" type="button" data-copy>ᕕ( ᐜ )ᕗ</button><span>measured march · He walks, and every step must prove he’s right.</span></div>
+      <b>WW-14</b><div><button class="k" type="button" data-copy>ᕕ( ᐜ )ᕗ</button><span>practice · He walks, and every step must prove he’s right.</span></div>
+    </div>
+    <div class="meta">WW-04 = WW-14, as FJ-04 = FJ-14. The loop stays; the step must prove, not is proof.</div>
+  </div>
+
+  <div class="act" id="ack">
+    <div class="id">ack</div>
+    <div class="hy">ընդունում · received, not agreed</div>
+    <button class="face" type="button" data-copy>(；一_一)</button>
+    <div class="slots">
+      <b class="ex">E</b><span>polite presence</span>
+      <b class="ch">C</b><span>mark the room wrong without leaving</span>
+      <b class="ti">T</b><span>; ゞ</span>
+    </div>
+    <div class="use">
+      <b>WW-05</b><div><button class="k" type="button" data-copy>(・・;)ゞ</button><span>joy deferred · He names the work with all the work to do.</span></div>
+      <b>WW-07</b><div><button class="k" type="button" data-copy>(；一_一)</button><span>fear, held · Now danger has a face — in time it came.</span></div>
+      <b>WW-10</b><div><button class="k" type="button" data-copy>(^_^;)</button><span>relief · He breathes. The near miss, he admits, is his.</span></div>
+    </div>
+    <div class="meta">WW-05 names the work, not the win · WW-07 fear held, in time · WW-10 the near miss is his</div>
+  </div>
+
+  <div class="act" id="wait">
+    <div class="id">wait</div>
+    <div class="hy">սպասում · time held</div>
+    <button class="face" type="button" data-copy>(－_－) zzZ</button>
+    <div class="slots">
+      <b class="ex">E</b><span>a face that stays</span>
+      <b class="ch">C</b><span>almost none; time is the message</span>
+      <b class="ti">T</b><span>zzZ / ｡oO</span>
+    </div>
+    <div class="use">
+      <b>WW-08</b><div><button class="k" type="button" data-copy>(´-ω-`)</button><span>pause · He stops: the plan has not been questioned yet.</span></div>
+      <b>WW-11</b><div><button class="k" type="button" data-copy>(´-`).｡oO</button><span>rule · He lifts his head — and writes a rule from this.</span></div>
+    </div>
+    <div class="meta">WW-08 stops where FJ-08 runs · WW-11 the wait ends in a rule</div>
+  </div>
+
+  <div class="act" id="force">
+    <div class="id">force</div>
+    <div class="hy">ուժ · the room must move</div>
+    <button class="face" type="button" data-copy>(ง&#x27;̀-&#x27;́)ง</button>
+    <div class="slots">
+      <b class="ex">E</b><span>a will that will not stay seated</span>
+      <b class="ch">C</b><span>fist, flex, barrel</span>
+      <b class="ti">T</b><span>now</span>
+    </div>
+    <div class="use">
+      <b>WW-09</b><div><button class="k" type="button" data-copy>(ง&#x27;̀-&#x27;́)ง</button><span>aim · He spares the table: habits take the blame.</span></div>
+    </div>
+    <div class="meta">WW-09 the will goes to the habit · FJ-09 flips the table instead</div>
+  </div>
+
+  <div class="act" id="repair">
+    <div class="id">repair</div>
+    <div class="hy">վերականգնում · form restored, habit not</div>
+    <button class="face" type="button" data-copy>┬─┬ノ( º _ ºノ)</button>
+    <div class="slots">
+      <b class="ex">E</b><span>the table as a repairable world</span>
+      <b class="ch">C</b><span>set upright</span>
+      <b class="ti">T</b><span>after</span>
+    </div>
+    <div class="use">
+      <b>WW-12</b><div><button class="k" type="button" data-copy>┬─┬ノ( º _ ºノ)</button><span>repair · He rights the habit. Table stays as is.</span></div>
+    </div>
+    <div class="meta">WW-12 rights the habit · FJ-12 rights the table</div>
+  </div>
+
+  <div class="act" id="hail">
+    <div class="id">hail</div>
+    <div class="hy">ողջույն · an available speaker waves</div>
+    <button class="face" type="button" data-copy>ヽ(•‿•)ノ</button>
+    <div class="slots">
+      <b class="ex">E</b><span>an available speaker</span>
+      <b class="ch">C</b><span>wave the result into the room</span>
+      <b class="ti">T</b><span>ノ release</span>
+    </div>
+    <div class="use">
+      <b>WW-13</b><div><button class="k" type="button" data-copy>ヽ(•‿•)ノ</button><span>earned joy · The smile returns. No sparkle. Now, hindsight.</span></div>
+    </div>
+    <div class="meta">WW-13 hail after the work · FJ-05 is hail before it</div>
+  </div>
+
+  <h2>Swaps</h2>
+  <p class="how">Beat by beat: the fool’s act, then the wise one. A dash means the lexicon json names no act for that fool beat (FJ-03, FJ-07, FJ-11).</p>
+  <div class="swap">
+    <b>01</b><a class="fj" href="/fools-journey/lexicon/#shrug">shrug</a><i>→</i><a class="ww" href="#question">question</a>
+    <b>02</b><a class="fj" href="/fools-journey/lexicon/#mask">mask</a><i>→</i><a class="ww" href="#side">side</a>
+    <b>03</b><span class="fj">—</span><i>→</i><a class="ww" href="#question">question</a>
+    <b>04</b><a class="fj" href="/fools-journey/lexicon/#walk">walk</a><i>→</i><a class="ww" href="#walk">walk</a>
+    <b>05</b><a class="fj" href="/fools-journey/lexicon/#hail">hail</a><i>→</i><a class="ww" href="#ack">ack</a>
+    <b>06</b><a class="fj" href="/fools-journey/lexicon/#force">force</a><i>→</i><a class="ww" href="#side">side</a>
+    <b>07</b><span class="fj">—</span><i>→</i><a class="ww" href="#ack">ack</a>
+    <b>08</b><a class="fj" href="/fools-journey/lexicon/#walk">walk</a><i>→</i><a class="ww" href="#wait">wait</a>
+    <b>09</b><a class="fj" href="/fools-journey/lexicon/#collapse">collapse</a><i>→</i><a class="ww" href="#force">force</a>
+    <b>10</b><a class="fj" href="/fools-journey/lexicon/#collapse">collapse</a><i>→</i><a class="ww" href="#ack">ack</a>
+    <b>11</b><span class="fj">—</span><i>→</i><a class="ww" href="#wait">wait</a>
+    <b>12</b><a class="fj" href="/fools-journey/lexicon/#repair">repair</a><i>→</i><a class="ww" href="#repair">repair</a>
+    <b>13</b><a class="fj" href="/fools-journey/lexicon/#mask">mask</a><i>→</i><a class="ww" href="#hail">hail</a>
+    <b>14</b><a class="fj" href="/fools-journey/lexicon/#walk">walk</a><i>→</i><a class="ww" href="#walk">walk</a>
+  </div>
+
+  <h2>Left out</h2>
+  <p class="how">Fool only: <a href="/fools-journey/lexicon/#mask">mask</a> · <a href="/fools-journey/lexicon/#collapse">collapse</a> · <a href="/fools-journey/lexicon/#shrug">shrug</a>. In neither walk: <a href="/fools-journey/lexicon/#alliance">alliance</a> · <a href="/fools-journey/lexicon/#shift">shift</a>.</p>
+
+  <footer>encoding: emoticon_string · not emoji · WW-14 → WW-01</footer>
+</main>
+<script>
+(() => {
+  const flash = (el) => {
+    el.dataset.copied = "1";
+    setTimeout(() => { delete el.dataset.copied; }, 900);
+  };
+  document.querySelectorAll("[data-copy]").forEach((el) => {
+    el.addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(el.textContent.trim()); } catch (_) {}
+      flash(el);
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+{
+  "id": "wise-lexicon",
+  "version": "1.0",
+  "date": "2026-11-11",
+  "type": "emoticon_string_subset",
+  "base": {
+    "path": "/fools-journey/kaomoji-lexicon.json",
+    "version": "1.1"
+  },
+  "note": "Subset of the kaomoji lexicon as used by /wise-way/. Definitions live in the base file; only the use is new.",
+  "acts": [
+    "question",
+    "side",
+    "walk",
+    "ack",
+    "wait",
+    "force",
+    "repair",
+    "hail"
+  ],
+  "partition": {
+    "shared": [
+      "force",
+      "walk",
+      "repair",
+      "hail"
+    ],
+    "wise_only": [
+      "question",
+      "side",
+      "wait",
+      "ack"
+    ],
+    "fool_only": [
+      "mask",
+      "collapse",
+      "shrug"
+    ],
+    "neither": [
+      "alliance",
+      "shift"
+    ]
+  },
+  "fj_unmapped": {
+    "beats": [
+      "FJ-03",
+      "FJ-07",
+      "FJ-11"
+    ],
+    "note": "no act in relations_to_fj of the base file"
+  },
+  "beats": [
+    {
+      "beat": "WW-01",
+      "stanza": "open",
+      "act": "question",
+      "face": "(・・？)",
+      "name": "attention",
+      "line": "The warning’s in the room. He asks: what’s new?",
+      "fj_act": "shrug"
+    },
+    {
+      "beat": "WW-02",
+      "stanza": "open",
+      "act": "side",
+      "face": "(￢_￢)",
+      "name": "doubt",
+      "line": "His plan is suspect — by its private light.",
+      "fj_act": "mask"
+    },
+    {
+      "beat": "WW-03",
+      "stanza": "open",
+      "act": "question",
+      "face": "(´-ω-`？)",
+      "name": "test",
+      "line": "He tests it once, then twice, until it’s true.",
+      "fj_act": null
+    },
+    {
+      "beat": "WW-04",
+      "stanza": "open",
+      "act": "walk",
+      "face": "ᕕ( ᐜ )ᕗ",
+      "name": "measured march",
+      "line": "He walks, and every step must prove he’s right.",
+      "fj_act": "walk"
+    },
+    {
+      "beat": "WW-05",
+      "stanza": "open",
+      "act": "ack",
+      "face": "(・・;)ゞ",
+      "name": "joy deferred",
+      "line": "He names the work with all the work to do.",
+      "fj_act": "hail"
+    },
+    {
+      "beat": "WW-06",
+      "stanza": "turn",
+      "act": "side",
+      "face": "(ಠ_ಠ)",
+      "name": "threat seen",
+      "line": "His eye stops on a trigger long since set.",
+      "fj_act": "force"
+    },
+    {
+      "beat": "WW-07",
+      "stanza": "turn",
+      "act": "ack",
+      "face": "(；一_一)",
+      "name": "fear, held",
+      "line": "Now danger has a face — in time it came.",
+      "fj_act": null
+    },
+    {
+      "beat": "WW-08",
+      "stanza": "turn",
+      "act": "wait",
+      "face": "(´-ω-`)",
+      "name": "pause",
+      "line": "He stops: the plan has not been questioned yet.",
+      "fj_act": "walk"
+    },
+    {
+      "beat": "WW-09",
+      "stanza": "turn",
+      "act": "force",
+      "face": "(ง'̀-'́)ง",
+      "name": "aim",
+      "line": "He spares the table: habits take the blame.",
+      "fj_act": "collapse"
+    },
+    {
+      "beat": "WW-10",
+      "stanza": "mend",
+      "act": "ack",
+      "face": "(^_^;)",
+      "name": "relief",
+      "line": "He breathes. The near miss, he admits, is his.",
+      "fj_act": "collapse"
+    },
+    {
+      "beat": "WW-11",
+      "stanza": "mend",
+      "act": "wait",
+      "face": "(´-`).｡oO",
+      "name": "rule",
+      "line": "He lifts his head — and writes a rule from this.",
+      "fj_act": null
+    },
+    {
+      "beat": "WW-12",
+      "stanza": "mend",
+      "act": "repair",
+      "face": "┬─┬ノ( º _ ºノ)",
+      "name": "repair",
+      "line": "He rights the habit. Table stays as is.",
+      "fj_act": "repair"
+    },
+    {
+      "beat": "WW-13",
+      "stanza": "return",
+      "act": "hail",
+      "face": "ヽ(•‿•)ノ",
+      "name": "earned joy",
+      "line": "The smile returns. No sparkle. Now, hindsight.",
+      "fj_act": "mask"
+    },
+    {
+      "beat": "WW-14",
+      "stanza": "return",
+      "act": "walk",
+      "face": "ᕕ( ᐜ )ᕗ",
+      "name": "practice",
+      "line": "He walks, and every step must prove he’s right.",
+      "fj_act": "walk"
+    }
+  ]
+}
