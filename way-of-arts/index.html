@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Way of Arts · the fool’s journey in verse · Artsrun</title>
+<meta name="description" content="The 14-beat kaomoji Fool’s Journey as a 14-line poem: one beat, one line, stanzas of 5 + 4 + 3 + 2.">
+<meta name="color-scheme" content="light dark">
+<script src="/js/theme.js"></script>
+<link rel="stylesheet" href="/css/site.css">
+<style>
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.ln { display: block; padding: .95rem 0 1.05rem; border-top: 1px solid var(--line); scroll-margin-top: 1rem; }
+.mark { display: flex; flex-wrap: wrap; gap: .2rem .8rem; align-items: baseline; font: .7rem/1.4 ui-monospace, Menlo, Consolas, monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+.face { font-size: 1.05rem; letter-spacing: 0; text-transform: none; white-space: nowrap; }
+.beat { margin-left: auto; text-align: right; }
+.echo { color: var(--teal); text-decoration: underline; text-underline-offset: 3px; }
+.verse { font: clamp(.95rem, 4.3vw, 1.3rem)/1.4 ui-serif, Georgia, "Times New Roman", serif; margin: .4rem 0 0; color: var(--fg); text-wrap: balance; }
+.open .face { color: var(--acc); }
+.turn .face { color: var(--red); }
+.fall .face { color: var(--prose); }
+.return .face { color: var(--teal); }
+.ln:target .verse { color: var(--acc); }
+.ghost { opacity: .45; transition: opacity .2s; }
+.ghost:hover, .ghost:focus-visible { opacity: 1; }
+.ghost .face { color: var(--acc); }
+.scheme { border-bottom: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="/">Hub</a><a href="/projects/" aria-current="page">Projects</a><a href="/blog/">Blog</a></nav>
+  <h1>Way of Arts</h1>
+  <p class="sub">the fool’s journey, in verse · one beat = one line · 5 + 4 + 3 + 2</p>
+  <p class="op">rhyme = ABABA · CDCD · EEE · BB — the return rhymes with the open</p>
+
+  <h2>I · open</h2>
+  <div class="ln open" id="l01">
+    <div class="mark"><span>01</span><span class="face">┐(￣ヘ￣)┌</span><span class="beat">indifference</span></div>
+    <p class="verse">The warning’s in the room. He shrugs: what’s new?</p>
+  </div>
+  <div class="ln open" id="l02">
+    <div class="mark"><span>02</span><span class="face">( ͡° ͜ʖ ͡°)✧</span><span class="beat">smug scheme</span></div>
+    <p class="verse">His plan is brilliant — by its private light.</p>
+  </div>
+  <div class="ln open" id="l03">
+    <div class="mark"><span>03</span><span class="face">╭( ~ノ~)╮</span><span class="beat">arrogance</span></div>
+    <p class="verse">He boasts it once, then twice, until it’s true.</p>
+  </div>
+  <div class="ln open" id="l04">
+    <div class="mark"><span>04</span><span class="face">ᕕ( ᑛ )ᕗ</span><span class="beat">oblivious march</span></div>
+    <p class="verse">He walks, and every step is proof he’s right.</p>
+  </div>
+  <div class="ln open" id="l05">
+    <div class="mark"><span>05</span><span class="face">٩(&gt;‿&lt;)۶</span><span class="beat">premature joy</span></div>
+    <p class="verse">He names the win with all the work to do.</p>
+  </div>
+
+  <h2>II · turn</h2>
+  <div class="ln turn" id="l06">
+    <div class="mark"><span>06</span><span class="face">( -_•)╦̵̵ͯ╤─</span><span class="beat">threat emerges</span></div>
+    <p class="verse">His stride trips on a trigger long since set.</p>
+  </div>
+  <div class="ln turn" id="l07">
+    <div class="mark"><span>07</span><span class="face">ヽ(ﾟДﾟ)ﾉ</span><span class="beat">panic</span></div>
+    <p class="verse">Now danger has a face — too late it came.</p>
+  </div>
+  <div class="ln turn" id="l08">
+    <div class="mark"><span>08</span><span class="face">┌( &gt;_&lt;)┘</span><span class="beat">fleeing</span></div>
+    <p class="verse">He runs. The plan has not been questioned yet.</p>
+  </div>
+  <div class="ln turn" id="l09">
+    <div class="mark"><span>09</span><span class="face">(╯°□°)╯︵ ┻━┻</span><span class="beat">rage</span></div>
+    <p class="verse">He flips the table: tables take the blame.</p>
+  </div>
+
+  <h2>III · fall</h2>
+  <div class="ln fall" id="l10">
+    <div class="mark"><span>10</span><span class="face">( T_T)</span><span class="beat">sorrow</span></div>
+    <p class="verse">He weeps. The wreckage, he admits, is his.</p>
+  </div>
+  <div class="ln fall" id="l11">
+    <div class="mark"><span>11</span><span class="face">( . .)</span><span class="beat">shame</span></div>
+    <p class="verse">He hangs his head — but writes no rule from this.</p>
+  </div>
+  <div class="ln fall" id="l12">
+    <div class="mark"><span>12</span><span class="face">┬─┬ノ(° - °ノ)</span><span class="beat">cleanup</span></div>
+    <p class="verse">He rights the table. Habit stays as is.</p>
+  </div>
+
+  <h2>IV · return</h2>
+  <div class="ln return" id="l13">
+    <div class="mark"><span>13</span><span class="face">( ͡° ͜ʖ ͡°)</span><span class="beat">delusion returns · <a class="echo" href="#l02">= 02 − ✧</a></span></div>
+    <p class="verse">The smirk returns. No sparkle. No hindsight.</p>
+  </div>
+  <div class="ln return" id="l14">
+    <div class="mark"><span>14</span><span class="face">ᕕ( ᑛ )ᕗ</span><span class="beat">relapse · <a class="echo" href="#l04">= 04</a></span></div>
+    <p class="verse">He walks, and every step is proof he’s right.</p>
+  </div>
+
+  <h2>↺ · the missing one</h2>
+  <a class="ln ghost scheme" href="#l01">
+    <div class="mark"><span>15 = 01</span><span class="face">┐(￣ヘ￣)┌</span><span class="beat">da capo</span></div>
+    <p class="verse">The warning’s in the room. He shrugs: what’s new?</p>
+  </a>
+
+  <footer>
+    5 + 4 + 3 + 2 = 14 · the stanza of one is line 01 again<br>
+    after <a href="/fools-journey/">Fool’s Journey</a> · <a href="/lezu/">Lezu</a> · faces from the <a href="/fools-journey/lexicon/">kaomoji lexicon</a> · <a href="/blog/fools-journey/">why 14 = 04</a> · patched: <a href="/wise-way/">Wise Way</a>
+  </footer>
+</main>
+</body>
+</html>

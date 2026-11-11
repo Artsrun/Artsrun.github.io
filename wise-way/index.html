@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wise Way · the fool’s journey, patched · Artsrun</title>
+<meta name="description" content="The Fool’s Journey poem with a small patch: same room, same table, same 14 end-words — a few words changed per line.">
+<meta name="color-scheme" content="light dark">
+<script src="/js/theme.js"></script>
+<link rel="stylesheet" href="/css/site.css">
+<style>
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.ln { display: block; padding: .95rem 0 1.05rem; border-top: 1px solid var(--line); scroll-margin-top: 1rem; }
+.mark, .tog { display: flex; flex-wrap: wrap; gap: .2rem .8rem; align-items: baseline; font: .7rem/1.4 ui-monospace, Menlo, Consolas, monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+.tog { display: inline-flex; align-items: center; gap: .55rem; cursor: pointer; padding: .35rem 0; }
+.tog:hover { color: var(--acc); }
+.tog input { margin: 0; }
+.face { font-size: 1.05rem; letter-spacing: 0; text-transform: none; white-space: nowrap; }
+.beat { margin-left: auto; text-align: right; }
+.echo { color: var(--teal); text-decoration: underline; text-underline-offset: 3px; }
+.verse { font: clamp(.95rem, 4.3vw, 1.3rem)/1.4 ui-serif, Georgia, "Times New Roman", serif; margin: .4rem 0 0; color: var(--fg); text-wrap: balance; }
+ins { text-decoration: none; }
+del { display: none; }
+main:has(#diff:checked) del { display: inline; color: var(--dim); text-decoration: line-through; margin-right: .3em; white-space: nowrap; }
+.open .face, .open ins, .return .face, .return ins { color: var(--acc); }
+.turn .face, .turn ins { color: var(--red); }
+.mend .face, .mend ins { color: var(--teal); }
+.ln:target .verse { color: var(--acc); }
+.ghost { opacity: .45; transition: opacity .2s; border-bottom: 1px solid var(--line); }
+.ghost:hover, .ghost:focus-visible { opacity: 1; }
+.ghost .face { color: var(--acc); }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="/">Hub</a><a href="/projects/" aria-current="page">Projects</a><a href="/blog/">Blog</a></nav>
+  <h1>Wise Way</h1>
+  <p class="sub">the fool’s journey, patched · same room, same table, same rhymes</p>
+  <p class="op">wise = fool + a small diff — every line still ends on the fool’s word</p>
+  <label class="tog"><input type="checkbox" id="diff"> show the fool underneath</label>
+
+  <h2>I · open</h2>
+  <div class="ln open" id="l01">
+    <div class="mark"><span>01</span><span class="face">(・・？)</span><span class="beat">attention</span></div>
+    <p class="verse">The warning’s in the room. He <del>shrugs</del><ins>asks</ins>: what’s new?</p>
+  </div>
+  <div class="ln open" id="l02">
+    <div class="mark"><span>02</span><span class="face">(￢_￢)</span><span class="beat">doubt</span></div>
+    <p class="verse">His plan is <del>brilliant</del><ins>suspect</ins> — by its private light.</p>
+  </div>
+  <div class="ln open" id="l03">
+    <div class="mark"><span>03</span><span class="face">(´-ω-`？)</span><span class="beat">test</span></div>
+    <p class="verse">He <del>boasts</del><ins>tests</ins> it once, then twice, until it’s true.</p>
+  </div>
+  <div class="ln open" id="l04">
+    <div class="mark"><span>04</span><span class="face">ᕕ( ᐜ )ᕗ</span><span class="beat">measured march</span></div>
+    <p class="verse">He walks, and every step <del>is proof</del><ins>must prove</ins> he’s right.</p>
+  </div>
+  <div class="ln open" id="l05">
+    <div class="mark"><span>05</span><span class="face">(・・;)ゞ</span><span class="beat">joy deferred</span></div>
+    <p class="verse">He names the <del>win</del><ins>work</ins> with all the work to do.</p>
+  </div>
+
+  <h2>II · turn</h2>
+  <div class="ln turn" id="l06">
+    <div class="mark"><span>06</span><span class="face">(ಠ_ಠ)</span><span class="beat">threat seen</span></div>
+    <p class="verse">His <del>stride trips</del><ins>eye stops</ins> on a trigger long since set.</p>
+  </div>
+  <div class="ln turn" id="l07">
+    <div class="mark"><span>07</span><span class="face">(；一_一)</span><span class="beat">fear, held</span></div>
+    <p class="verse">Now danger has a face — <del>too late</del><ins>in time</ins> it came.</p>
+  </div>
+  <div class="ln turn" id="l08">
+    <div class="mark"><span>08</span><span class="face">(´-ω-`)</span><span class="beat">pause</span></div>
+    <p class="verse">He <del>runs. The</del><ins>stops: the</ins> plan has not been questioned yet.</p>
+  </div>
+  <div class="ln turn" id="l09">
+    <div class="mark"><span>09</span><span class="face">(ง&#x27;̀-&#x27;́)ง</span><span class="beat">aim</span></div>
+    <p class="verse">He <del>flips</del><ins>spares</ins> the table: <del>tables</del><ins>habits</ins> take the blame.</p>
+  </div>
+
+  <h2>III · <del>fall</del><ins>mend</ins></h2>
+  <div class="ln mend" id="l10">
+    <div class="mark"><span>10</span><span class="face">(^_^;)</span><span class="beat">relief</span></div>
+    <p class="verse">He <del>weeps</del><ins>breathes</ins>. The <del>wreckage</del><ins>near miss</ins>, he admits, is his.</p>
+  </div>
+  <div class="ln mend" id="l11">
+    <div class="mark"><span>11</span><span class="face">(´-`).｡oO</span><span class="beat">rule</span></div>
+    <p class="verse">He <del>hangs</del><ins>lifts</ins> his head — <del>but</del><ins>and</ins> writes <del>no</del><ins>a</ins> rule from this.</p>
+  </div>
+  <div class="ln mend" id="l12">
+    <div class="mark"><span>12</span><span class="face">┬─┬ノ( º _ ºノ)</span><span class="beat">repair</span></div>
+    <p class="verse">He rights the <del>table</del><ins>habit</ins>. <del>Habit</del><ins>Table</ins> stays as is.</p>
+  </div>
+
+  <h2>IV · return</h2>
+  <div class="ln return" id="l13">
+    <div class="mark"><span>13</span><span class="face">ヽ(•‿•)ノ</span><span class="beat">earned joy</span></div>
+    <p class="verse">The <del>smirk</del><ins>smile</ins> returns. No sparkle. <del>No</del><ins>Now,</ins> hindsight.</p>
+  </div>
+  <div class="ln return" id="l14">
+    <div class="mark"><span>14</span><span class="face">ᕕ( ᐜ )ᕗ</span><span class="beat">practice · <a class="echo" href="#l04">= 04</a></span></div>
+    <p class="verse">He walks, and every step <del>is proof</del><ins>must prove</ins> he’s right.</p>
+  </div>
+
+  <h2>↺ · the next warning</h2>
+  <a class="ln ghost" href="#l01">
+    <div class="mark"><span>15 = 01</span><span class="face">(・・？)</span><span class="beat">da capo</span></div>
+    <p class="verse">The warning’s in the room. He asks: what’s new?</p>
+  </a>
+
+  <footer>
+    the loop stays · what repeats is the check, not the claim · line 13: no + w = now<br>
+    patch on <a href="/way-of-arts/">Way of Arts</a> · after <a href="/fools-journey/">Fool’s Journey</a> · <a href="/lezu/">Lezu</a> · faces from the <a href="/fools-journey/lexicon/">kaomoji lexicon</a>
+  </footer>
+</main>
+</body>
+</html>
