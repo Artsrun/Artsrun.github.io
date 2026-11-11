@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wise chain · Artsrun</title>
+<meta name="description" content="The wise way as a playable tape: fourteen lines, one kaomoji speech act each. The fool’s tape runs on the same beats.">
+<meta name="color-scheme" content="light dark">
+<script src="/js/theme.js"></script>
+<link rel="stylesheet" href="/css/site.css">
+<style>
+.k { font-family: ui-monospace, Menlo, Consolas, monospace; }
+.scene {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem 1rem 1.1rem;
+  margin: 1.1rem 0 1.2rem;
+}
+.q-label {
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.question { margin: .35rem 0 0; font-size: 1.12rem; line-height: 1.35; }
+.pills { display: flex; gap: .45rem; flex-wrap: wrap; margin-top: .75rem; }
+.chip, .ctrl, .dot {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--fg);
+  cursor: pointer;
+}
+.chip {
+  border-radius: 999px;
+  padding: .4rem .75rem;
+  font-size: .75rem;
+}
+.chip[aria-pressed="true"] { border-color: var(--acc); color: var(--acc); }
+.chip .job { color: var(--dim); font-size: .68rem; margin-left: .2rem; }
+.chip[aria-pressed="true"] .job { color: var(--acc); opacity: .7; }
+.stage { text-align: center; padding: .55rem 0 .15rem; }
+.beatno { font-size: .68rem; letter-spacing: .32em; text-transform: uppercase; color: var(--dim); }
+.face {
+  font-family: ui-monospace, Menlo, Consolas, "Noto Sans Mono", monospace;
+  font-size: clamp(28px, 8vw, 52px);
+  line-height: 1.35;
+  padding: .65rem 0 .2rem;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.act-row {
+  display: flex;
+  gap: .45rem;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.act-name {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  color: var(--acc);
+  letter-spacing: .16em;
+  font-size: .7rem;
+  text-transform: uppercase;
+}
+.hy { color: var(--teal); font-size: .78rem; }
+.thought { margin: .5rem 0 0; min-height: 2.6em; color: var(--prose); }
+.slots {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .2rem .55rem;
+  margin-top: .7rem;
+  padding: .55rem .65rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: .72rem;
+  line-height: 1.45;
+  color: var(--dim);
+}
+.slots b { font-weight: 600; letter-spacing: .1em; font-size: .62rem; }
+.slots .ex { color: var(--acc); }
+.slots .ch { color: var(--red); }
+.slots .ti { color: var(--teal); }
+.controls { display: flex; gap: .45rem; flex-wrap: wrap; justify-content: center; margin: .85rem 0 .15rem; }
+.ctrl { border-radius: 10px; padding: .45rem .7rem; font-size: .75rem; }
+.ctrl.primary { border-color: var(--acc); color: var(--acc); }
+.ctrl:disabled { opacity: .4; cursor: not-allowed; }
+.rail { display: flex; gap: .35rem; flex-wrap: wrap; justify-content: center; margin-top: .7rem; }
+.dot {
+  width: 1.7rem; height: 1.7rem; border-radius: 50%;
+  font-size: .65rem; display: grid; place-items: center;
+}
+.dot.on { border-color: var(--acc); color: var(--acc); }
+.dot.done { color: var(--teal); border-color: color-mix(in oklab, var(--teal) 35%, var(--line)); }
+.tape {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  background: color-mix(in oklab, var(--bg), var(--paper));
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  padding: .65rem .7rem;
+  font-size: .72rem;
+  line-height: 1.65;
+  color: var(--dim);
+  min-height: 4.2em;
+  white-space: pre-wrap;
+  margin-top: .4rem;
+}
+.tape .now { color: var(--fg); }
+.how { margin: 0 0 1rem; color: var(--prose); }
+.how + .how { margin-top: -.4rem; }
+.how a { text-decoration: underline; text-underline-offset: 3px; }
+.tape-label { margin-top: .85rem; }
+</style>
+</head>
+<body>
+<main>
+  <nav><a href="/">Hub</a><a href="/wise-way/">Wise Way</a><a href="/wise-way/lexicon/">Lexicon</a><a href="/wise-way/chain/" aria-current="page">Chain</a></nav>
+  <h1>Wise chain</h1>
+  <p class="date">11 Nov 2026 · emoticon_string · wise tape v1.0</p>
+  <p class="op">one act per line — same walk, two tapes</p>
+  <p class="how">The wise way as a tape: fourteen lines, one act each. The fool’s tape runs on the same beats.</p>
+  <p class="how">Pick a tape. Play. The log below the rail is the chain. A dash means the lexicon json names no act for that fool beat (FJ-03, FJ-07, FJ-11).</p>
+  <section class="scene" aria-live="polite">
+    <div class="q-label">on the table</div>
+    <p class="question" id="q">A warning is in the room. What does the wise walk do?</p>
+    <div class="pills">
+      <button class="chip" type="button" aria-pressed="true">wise <span class="job">ask</span></button>
+      <button class="chip" type="button" aria-pressed="false">fool <span class="job">shrug</span></button>
+    </div>
+    <div class="stage">
+      <div class="beatno" id="beatno">01 / 14 · attention</div>
+      <div class="face" id="face">(・・？)</div>
+      <div class="act-row">
+        <div class="act-name" id="act">question</div>
+        <div class="hy" id="hy">հարց</div>
+      </div>
+      <p class="thought" id="thought">The warning’s in the room. He asks: what’s new?</p>
+    </div>
+    <div class="slots" aria-label="existence change time">
+      <b class="ex">E</b><span id="ex">a question already in the room</span>
+      <b class="ch">C</b><span id="ch">hold the turn open</span>
+      <b class="ti">T</b><span id="ti">？ — not yet</span>
+    </div>
+    <div class="controls">
+      <button class="ctrl" id="prev" type="button">←</button>
+      <button class="ctrl primary" id="play" type="button">play</button>
+      <button class="ctrl" id="next" type="button">→</button>
+      <button class="ctrl" id="reset" type="button">reset</button>
+    </div>
+    <div class="rail" id="rail" aria-label="steps"></div>
+    <div class="q-label tape-label">tape</div>
+    <div class="tape" id="tape"></div>
+  </section>
+  <p class="sub"><a href="/wise-way/lexicon/">wise lexicon →</a> · <a href="/wise-way/">the 14 lines →</a> · <a href="/blog/chain/">chain of thought →</a></p>
+  <footer>encoding: emoticon_string · what repeats is the check, not the claim</footer>
+</main>
+<script src="/wise-way/chain/chain.js"></script>
+</body>
+</html>

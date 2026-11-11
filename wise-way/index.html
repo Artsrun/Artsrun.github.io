@@ -12,6 +12,7 @@
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 main { max-width: 720px; }
+@media (max-width: 26rem) { nav { gap: .6rem; letter-spacing: .06em; } }
 h1, .sub, .op, footer { text-align: center; }
 h1 { font: 700 clamp(28px, 9vw, 56px)/1.15 ui-serif, Georgia, serif; letter-spacing: .18em; margin: 18px 0 0; text-wrap: balance; }
 .sub { margin: 10px 0 0; font: 13px/1.6 ui-serif, Georgia, serif; letter-spacing: .22em; text-transform: uppercase; }
@@ -41,7 +42,7 @@ main:has(#diff:checked) del { display: inline; color: var(--dim); font-weight: 4
 </head>
 <body>
 <main>
-  <nav><a href="/">Hub</a><a href="/projects/" aria-current="page">Projects</a><a href="/blog/">Blog</a></nav>
+  <nav><a href="/">Hub</a><a href="/projects/" aria-current="page">Projects</a><a href="/blog/">Blog</a><a href="/wise-way/lexicon/">Lexicon</a><a href="/wise-way/chain/">Chain</a></nav>
   <h1>Wise Way</h1>
   <p class="sub">the fool’s journey, patched · same room, same table, same rhymes</p>
   <p class="op">wise = fool + a small diff — every line still ends on the fool’s word</p>
@@ -149,7 +150,7 @@ main:has(#diff:checked) del { display: inline; color: var(--dim); font-weight: 4
 
   <footer>
     the loop stays · what repeats is the check, not the claim · line 13: no + w = now<br>
-    patch on <a href="/way-of-arts/">Way of Arts</a> · after <a href="/fools-journey/">Fool’s Journey</a> · <a href="/lezu/">Lezu</a> · faces from the <a href="/fools-journey/lexicon/">kaomoji lexicon</a>
+    patch on <a href="/way-of-arts/">Way of Arts</a> · after <a href="/fools-journey/">Fool’s Journey</a> · <a href="/lezu/">Lezu</a> · faces from the <a href="/fools-journey/lexicon/">kaomoji lexicon</a> · <a href="/wise-way/lexicon/">wise lexicon</a>
   </footer>
 </main>
 </body>
