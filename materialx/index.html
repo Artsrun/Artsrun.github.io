@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MaterialX · Artsrun</title>
+<meta name="description" content="MaterialX on the web — three.js MaterialXLoader sphere demo.">
+<meta name="color-scheme" content="light dark">
+<script src="/js/theme.js"></script>
+<link rel="stylesheet" href="/css/site.css?v=3">
+<style>
+body { margin: 0; overflow: hidden; }
+canvas { display: block; width: 100vw; height: 100vh; }
+nav { position: absolute; top: 0; left: 0; right: 0; z-index: 10; padding: 1rem; background: color-mix(in srgb, Canvas 80%, transparent); backdrop-filter: blur(8px); }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.webgpu.js",
+    "three/webgpu": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.webgpu.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<nav>
+  <a href="/">Hub</a>
+  <a href="/projects/">Projects</a>
+  <a href="/materialx/" aria-current="page">MaterialX</a>
+</nav>
+<script type="module">
+import * as THREE from 'three/webgpu';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { MaterialXLoader } from 'three/addons/loaders/MaterialXLoader.js';
+
+const renderer = new THREE.WebGPURenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x111111);
+
+const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.set(2.5, 1.5, 2.5);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+
+const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
+scene.add(hemi);
+const dir = new THREE.DirectionalLight(0xffffff, 1.5);
+dir.position.set(5, 10, 7);
+scene.add(dir);
+
+const loader = new MaterialXLoader().setPath(
+  'https://raw.githubusercontent.com/AcademySoftwareFoundation/MaterialX/main/resources/Materials/Examples/StandardSurface/'
+);
+
+try {
+  const { materials } = await loader.loadAsync('standard_surface_brass_tiled.mtlx');
+  const material = materials[0];
+  const mesh = new THREE.Mesh(new THREE.SphereGeometry(1, 128, 128), material);
+  scene.add(mesh);
+} catch (e) {
+  console.warn('MaterialX load failed, falling back', e);
+  const mesh = new THREE.Mesh(
+    new THREE.SphereGeometry(1, 64, 64),
+    new THREE.MeshStandardMaterial({ color: 0x888888, metalness: 0.8, roughness: 0.2 })
+  );
+  scene.add(mesh);
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+renderer.setAnimationLoop(() => {
+  controls.update();
+  renderer.render(scene, camera);
+});
+</script>
+</body>
+</html>
