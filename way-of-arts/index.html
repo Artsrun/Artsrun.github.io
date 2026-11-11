@@ -11,21 +11,26 @@
 <style>
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-.ln { display: block; padding: .95rem 0 1.05rem; border-top: 1px solid var(--line); scroll-margin-top: 1rem; }
-.mark { display: flex; flex-wrap: wrap; gap: .2rem .8rem; align-items: baseline; font: .7rem/1.4 ui-monospace, Menlo, Consolas, monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
-.face { font-size: 1.05rem; letter-spacing: 0; text-transform: none; white-space: nowrap; }
-.beat { margin-left: auto; text-align: right; }
-.echo { color: var(--teal); text-decoration: underline; text-underline-offset: 3px; }
-.verse { font: clamp(.95rem, 4.3vw, 1.3rem)/1.4 ui-serif, Georgia, "Times New Roman", serif; margin: .4rem 0 0; color: var(--fg); text-wrap: balance; }
-.open .face { color: var(--acc); }
-.turn .face { color: var(--red); }
-.fall .face { color: var(--prose); }
-.return .face { color: var(--teal); }
-.ln:target .verse { color: var(--acc); }
+main { max-width: 720px; }
+h1, .sub, .op, footer { text-align: center; }
+h1 { font: 700 clamp(28px, 9vw, 56px)/1.15 ui-serif, Georgia, serif; letter-spacing: .18em; margin: 18px 0 0; text-wrap: balance; }
+.sub { margin: 10px 0 0; font: 13px/1.6 ui-serif, Georgia, serif; letter-spacing: .22em; text-transform: uppercase; }
+.op { margin: 14px 0 36px; }
+h2 { margin: 28px 0 8px; padding-bottom: 6px; border-bottom: 1px solid var(--line); font: 400 11px/1.5 ui-serif, Georgia, serif; letter-spacing: .32em; }
+.ln { display: block; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 22px 16px 20px; margin: 14px 0; text-align: center; scroll-margin-top: 1rem; }
+.ln:target { border-color: var(--acc); }
+.beatno { font: 12px/1.5 ui-serif, Georgia, serif; letter-spacing: .4em; text-transform: uppercase; color: var(--dim); }
+.face { font: clamp(36px, 12vw, 80px)/1.25 ui-monospace, Menlo, Consolas, monospace; padding: 18px 4px 10px; overflow-x: auto; white-space: nowrap; color: var(--fg); }
+.verse { font: 700 clamp(22px, 6.5vw, 34px)/1.25 ui-serif, Georgia, serif; margin: 4px 0 0; text-wrap: balance; }
+.beat { margin-top: 8px; font: 13px/1.5 ui-serif, Georgia, serif; color: var(--teal); }
+.echo { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .ghost { opacity: .45; transition: opacity .2s; }
 .ghost:hover, .ghost:focus-visible { opacity: 1; }
-.ghost .face { color: var(--acc); }
-.scheme { border-bottom: 1px solid var(--line); }
+footer { margin-top: 40px; font: 12px/1.8 ui-serif, Georgia, serif; letter-spacing: .16em; text-transform: uppercase; }
+.open .verse, .ghost .verse { color: var(--acc); }
+.turn .verse { color: var(--red); }
+.fall .verse { color: var(--prose); }
+.return .verse { color: var(--teal); }
 </style>
 </head>
 <body>
@@ -36,73 +41,103 @@ html { scroll-behavior: smooth; }
   <p class="op">rhyme = ABABA · CDCD · EEE · BB — the return rhymes with the open</p>
 
   <h2>I · open</h2>
-  <div class="ln open" id="l01">
-    <div class="mark"><span>01</span><span class="face">┐(￣ヘ￣)┌</span><span class="beat">indifference</span></div>
+  <article class="ln open" id="l01">
+    <div class="beatno">01</div>
+    <div class="face">┐(￣ヘ￣)┌</div>
     <p class="verse">The warning’s in the room. He shrugs: what’s new?</p>
-  </div>
-  <div class="ln open" id="l02">
-    <div class="mark"><span>02</span><span class="face">( ͡° ͜ʖ ͡°)✧</span><span class="beat">smug scheme</span></div>
+    <div class="beat">indifference</div>
+  </article>
+  <article class="ln open" id="l02">
+    <div class="beatno">02</div>
+    <div class="face">( ͡° ͜ʖ ͡°)✧</div>
     <p class="verse">His plan is brilliant — by its private light.</p>
-  </div>
-  <div class="ln open" id="l03">
-    <div class="mark"><span>03</span><span class="face">╭( ~ノ~)╮</span><span class="beat">arrogance</span></div>
+    <div class="beat">smug scheme</div>
+  </article>
+  <article class="ln open" id="l03">
+    <div class="beatno">03</div>
+    <div class="face">╭( ~ノ~)╮</div>
     <p class="verse">He boasts it once, then twice, until it’s true.</p>
-  </div>
-  <div class="ln open" id="l04">
-    <div class="mark"><span>04</span><span class="face">ᕕ( ᑛ )ᕗ</span><span class="beat">oblivious march</span></div>
+    <div class="beat">arrogance</div>
+  </article>
+  <article class="ln open" id="l04">
+    <div class="beatno">04</div>
+    <div class="face">ᕕ( ᑛ )ᕗ</div>
     <p class="verse">He walks, and every step is proof he’s right.</p>
-  </div>
-  <div class="ln open" id="l05">
-    <div class="mark"><span>05</span><span class="face">٩(&gt;‿&lt;)۶</span><span class="beat">premature joy</span></div>
+    <div class="beat">oblivious march</div>
+  </article>
+  <article class="ln open" id="l05">
+    <div class="beatno">05</div>
+    <div class="face">٩(&gt;‿&lt;)۶</div>
     <p class="verse">He names the win with all the work to do.</p>
-  </div>
+    <div class="beat">premature joy</div>
+  </article>
 
   <h2>II · turn</h2>
-  <div class="ln turn" id="l06">
-    <div class="mark"><span>06</span><span class="face">( -_•)╦̵̵ͯ╤─</span><span class="beat">threat emerges</span></div>
+  <article class="ln turn" id="l06">
+    <div class="beatno">06</div>
+    <div class="face">( -_•)╦̵̵ͯ╤─</div>
     <p class="verse">His stride trips on a trigger long since set.</p>
-  </div>
-  <div class="ln turn" id="l07">
-    <div class="mark"><span>07</span><span class="face">ヽ(ﾟДﾟ)ﾉ</span><span class="beat">panic</span></div>
+    <div class="beat">threat emerges</div>
+  </article>
+  <article class="ln turn" id="l07">
+    <div class="beatno">07</div>
+    <div class="face">ヽ(ﾟДﾟ)ﾉ</div>
     <p class="verse">Now danger has a face — too late it came.</p>
-  </div>
-  <div class="ln turn" id="l08">
-    <div class="mark"><span>08</span><span class="face">┌( &gt;_&lt;)┘</span><span class="beat">fleeing</span></div>
+    <div class="beat">panic</div>
+  </article>
+  <article class="ln turn" id="l08">
+    <div class="beatno">08</div>
+    <div class="face">┌( &gt;_&lt;)┘</div>
     <p class="verse">He runs. The plan has not been questioned yet.</p>
-  </div>
-  <div class="ln turn" id="l09">
-    <div class="mark"><span>09</span><span class="face">(╯°□°)╯︵ ┻━┻</span><span class="beat">rage</span></div>
+    <div class="beat">fleeing</div>
+  </article>
+  <article class="ln turn" id="l09">
+    <div class="beatno">09</div>
+    <div class="face">(╯°□°)╯︵ ┻━┻</div>
     <p class="verse">He flips the table: tables take the blame.</p>
-  </div>
+    <div class="beat">rage</div>
+  </article>
 
   <h2>III · fall</h2>
-  <div class="ln fall" id="l10">
-    <div class="mark"><span>10</span><span class="face">( T_T)</span><span class="beat">sorrow</span></div>
+  <article class="ln fall" id="l10">
+    <div class="beatno">10</div>
+    <div class="face">( T_T)</div>
     <p class="verse">He weeps. The wreckage, he admits, is his.</p>
-  </div>
-  <div class="ln fall" id="l11">
-    <div class="mark"><span>11</span><span class="face">( . .)</span><span class="beat">shame</span></div>
+    <div class="beat">sorrow</div>
+  </article>
+  <article class="ln fall" id="l11">
+    <div class="beatno">11</div>
+    <div class="face">( . .)</div>
     <p class="verse">He hangs his head — but writes no rule from this.</p>
-  </div>
-  <div class="ln fall" id="l12">
-    <div class="mark"><span>12</span><span class="face">┬─┬ノ(° - °ノ)</span><span class="beat">cleanup</span></div>
+    <div class="beat">shame</div>
+  </article>
+  <article class="ln fall" id="l12">
+    <div class="beatno">12</div>
+    <div class="face">┬─┬ノ(° - °ノ)</div>
     <p class="verse">He rights the table. Habit stays as is.</p>
-  </div>
+    <div class="beat">cleanup</div>
+  </article>
 
   <h2>IV · return</h2>
-  <div class="ln return" id="l13">
-    <div class="mark"><span>13</span><span class="face">( ͡° ͜ʖ ͡°)</span><span class="beat">delusion returns · <a class="echo" href="#l02">= 02 − ✧</a></span></div>
+  <article class="ln return" id="l13">
+    <div class="beatno">13</div>
+    <div class="face">( ͡° ͜ʖ ͡°)</div>
     <p class="verse">The smirk returns. No sparkle. No hindsight.</p>
-  </div>
-  <div class="ln return" id="l14">
-    <div class="mark"><span>14</span><span class="face">ᕕ( ᑛ )ᕗ</span><span class="beat">relapse · <a class="echo" href="#l04">= 04</a></span></div>
+    <div class="beat">delusion returns · <a class="echo" href="#l02">= 02 − ✧</a></div>
+  </article>
+  <article class="ln return" id="l14">
+    <div class="beatno">14</div>
+    <div class="face">ᕕ( ᑛ )ᕗ</div>
     <p class="verse">He walks, and every step is proof he’s right.</p>
-  </div>
+    <div class="beat">relapse · <a class="echo" href="#l04">= 04</a></div>
+  </article>
 
   <h2>↺ · the missing one</h2>
-  <a class="ln ghost scheme" href="#l01">
-    <div class="mark"><span>15 = 01</span><span class="face">┐(￣ヘ￣)┌</span><span class="beat">da capo</span></div>
+  <a class="ln ghost" href="#l01">
+    <div class="beatno">15 = 01</div>
+    <div class="face">┐(￣ヘ￣)┌</div>
     <p class="verse">The warning’s in the room. He shrugs: what’s new?</p>
+    <div class="beat">da capo</div>
   </a>
 
   <footer>
